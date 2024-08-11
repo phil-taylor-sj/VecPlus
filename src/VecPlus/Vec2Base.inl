@@ -10,9 +10,23 @@ namespace vecp
     }
 
     template <typename T, template <typename> class Derived>
+    void Vec2Base<T, Derived>::operator += (const Derived<T> vector)
+    {
+        this->x += vector.x;
+        this->y += vector.y;
+    }
+
+    template <typename T, template <typename> class Derived>
     Derived<T> Vec2Base<T, Derived>::operator - (const Derived<T>& vector) const
     {
         return Derived<T>(this->x - vector.x, this->y - vector.y);
+    }
+
+    template <typename T, template <typename> class Derived>
+    void Vec2Base<T, Derived>::operator -= (const Derived<T>& vector)
+    {
+        this->x -= vector.x;
+        this->y -= vector.y;
     }
 
     template <typename T, template <typename> class Derived>
@@ -39,20 +53,6 @@ namespace vecp
     {
         this->x *= vector.x;
         this->y *= vector.y;
-    }
-
-    template <typename T, template <typename> class Derived>
-    void Vec2Base<T, Derived>::operator += (const Derived<T> vector)
-    {
-        this->x += vector.x;
-        this->y += vector.y;
-    }
-
-    template <typename T, template <typename> class Derived>
-    void Vec2Base<T, Derived>::operator -= (const Derived<T>& vector)
-    {
-        this->x -= vector.x;
-        this->y -= vector.y;
     }
 
     template <typename T, template <typename> class Derived>
