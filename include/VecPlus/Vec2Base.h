@@ -30,6 +30,13 @@ namespace vecp
         Derived<T> operator + (const Derived<T>& vector) const;
 
         /**
+         * @brief Overload the addition assignment operator (+=) for vector addition.
+         * 
+         * @param vector The vector to be added to the current vector.
+        */
+        void operator += (const Derived<T> vector);
+        
+        /**
          * @brief Overload the subtration operator (-) for vector subtraction.
          * 
          * @param vector The vector to be subtracted from the current vector.
@@ -37,6 +44,13 @@ namespace vecp
          * 
         */
         Derived<T> operator - (const Derived<T>& vector) const;
+
+        /**
+         * @brief Overload the subtraction assignment operator (-=) for vector subtraction.
+         * 
+         * @param vector The vector to be subtracted from the current vector.
+        */
+        void operator -= (const Derived<T>& vector);
 
         /**
          * @brief Overload the multiplication operator (*) for vector by scalar multiplication.
@@ -67,20 +81,6 @@ namespace vecp
          * @param vector The vector multiply the current vector values by.
         */
         void operator *= (const Derived<T>& vector);
-
-        /**
-         * @brief Overload the addition assignment operator (+=) for vector addition.
-         * 
-         * @param vector The vector to be added to the current vector.
-        */
-        void operator += (const Derived<T> vector);
-
-        /**
-         * @brief Overload the subtraction assignment operator (-=) for vector subtraction.
-         * 
-         * @param vector The vector to be subtracted from the current vector.
-        */
-        void operator -= (const Derived<T>& vector);
 
         /**
          * @brief Overload the equality operator (==) for vector comparison.

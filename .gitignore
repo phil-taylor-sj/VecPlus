@@ -1,3 +1,6 @@
+# cmake directories
+build
+
 # Prerequisites
 *.d
 
@@ -30,3 +33,6 @@
 *.exe
 *.out
 *.app
+
+# VS Code files for those working on multiple tools
+.vscode/*

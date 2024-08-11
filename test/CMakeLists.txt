@@ -4,8 +4,6 @@ enable_testing()
 
 set(TEST_TARGET VecPlus_Tests)
 
-#include(Utilities_Test/Utilities_Test.cmake)
-
 set(TEST_SRCS
     pch.cpp
     pch.h
