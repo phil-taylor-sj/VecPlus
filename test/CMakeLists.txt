@@ -7,7 +7,7 @@ set(TEST_TARGET VecPlus_Tests)
 set(TEST_SRCS
     pch.cpp
     pch.h
-    Vec2Int_Test.cpp
+    Vec2i_Test.cpp
     Vec2d_Test.cpp
     Vec2f_Test.cpp
 )
