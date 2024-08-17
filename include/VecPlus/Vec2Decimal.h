@@ -4,14 +4,13 @@
 namespace vecp
 {
 
-    /** 
-     * @brief Represents a 2D vector with components of type T.
+    /*! 
+     * \brief Represents a 2D vector with components of primative decimal types.
      * 
-     * This class provides basic operations for 2D vectors such as
-     * calculation of magnitude, distance between two vectors, rotartion
-     * and various arithmetic operations.
+     * Extends the Vec2Base class with functionality for division, rotation, 
+     * calculation of mangitude, and calculation of the dot product.
      * 
-     * @tparam T The type of elements in the vector (e.g. float, double, int).
+     * \tparam T The type of elements in the vector (e.g. float, double, int).
      * 
     */
     template <typename T>
@@ -19,84 +18,83 @@ namespace vecp
     {
     public:
         
-        /**
-         * @brief Calculate the magnitude (length) of the vector.
+        /*!
+         * \brief Calculate the magnitude (length) of the vector.
          * 
-         * @return The magnitude of the vector.
-         * 
+         * \return The magnitude of the vector. 
         */
         T mag() const;
 
-        /**
-         * @brief Calcualte the magnitude (legnth) of the distance vector between
+        /*!
+         * \brief Calcualte the magnitude (legnth) of the distance vector between
          * this vector and another vector.
          * 
-         * @param vector The other vector to calculate the distance vector between.
-         * @return The magnitude of the transform vector.
+         * \param vector The other vector to calculate the distance vector between.
+         * \return The magnitude of the transform vector.
          * 
         */
         T mag(const Vec2Decimal<T>& vector) const;
 
-        /**
-         * @brief Apply a rotation to the vector by a given angle.
+        /*!
+         * \brief Apply a rotation to the vector by a given angle.
          * 
-         * @param angle The angle (in degrees) by which to rotate the vector.
+         * \param angle The angle (in degrees) by which to rotate the vector.
         */
         void rotate(T angle);
 
 
-        /**
-         * @brief Overload the division operator (/) for vector by scalar division.
+        /*!
+         * \brief Overload the division operator (/) for vector by scalar division.
          * 
-         * @param value The scalar value to divide the current vector by.
-         * @return A new vector containing the modified values.
+         * \param value The scalar value to divide the current vector by.
+         * \return A new vector containing the modified values.
         */
         Vec2Decimal<T> operator / (T value) const;
 
-        /**
-         * @brief Overload the division operator (/) for vector by vector division.
+        /*!
+         * \brief Overload the division operator (/) for vector by vector division.
          * 
-         * @param vector The vector to divide the current vector values by.
-         * @return A new vector containing the modified values.
+         * \param vector The vector to divide the current vector values by.
+         * \return A new vector containing the modified values.
         */
         Vec2Decimal<T> operator / (const Vec2Decimal<T>& vector) const;
         
-        /**
-         * @brief Overload the division operator (/=) for vector by scalar division.
+        /*!
+         * \brief Overload the division operator (/=) for vector by scalar division.
          * 
-         * @param value The scalar value to divide the current vector by.
+         * \param value The scalar value to divide the current vector by.
         */
         void operator /= (T value);
 
-        /**
-         * @brief Overload the division operator (/=) for vector by scalar division.
+        /*!
+         * \brief Overload the division operator (/=) for vector by scalar division.
          * 
-         * @param vector The vector to divide the current vector values by.
+         * \param vector The vector to divide the current vector values by.
         */
         void operator /= (const Vec2Decimal<T>& vector);
 
-        /**
-         * @brief Calculate dot product of the current vector and another vector.
+        /*!
+         * \brief Calculate dot product of the current vector and another vector.
          * 
-         * @param vector The vector to apply to the current vector.
-         * @return The dot product of the vectors.
+         * \param vector The vector to apply to the current vector.
+         * \return The dot product of the vectors.
         */
         T dot(const Vec2Decimal<T>& vector) const;
 
-        /**
-         * @brief Calculate dot product of the current vector a vector of two identical scalar values.
+        /*!
+         * \brief Calculate dot product of the current vector a vector of two identical scalar values.
          * 
-         * @param value The x & y scalar value to apply to the current vector.
-         * @return The dot product of the vectors.
+         * \param value The x & y scalar value to apply to the current vector.
+         * \return The dot product of the vectors.
         */
         T dot(T value) const;
 
-        /**
-         * @brief Calculate dot product of the current vector a vector of two scalar values.
+        /*!
+         * \brief Calculate dot product of the current vector a vector of two scalar values.
          * 
-         * @param xTwo The x scalar value to apply to the current vector.
-         * @param yTwo The y scalar valeu to apply to the current vector.
-         * @return The dot product of the vectors.
+         * \param xTwo The x scalar value to apply to the current vector.
+         * \param yTwo The y scalar valeu to apply to the current vector.
+         * \return The dot product of the vectors.
         */
         T dot(T xTwo, T yTwo) const;
 

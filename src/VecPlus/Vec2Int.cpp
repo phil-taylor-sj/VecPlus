@@ -22,11 +22,6 @@ namespace vecp
     template class Vec2Base<int, Vec2Int>;
 
     template class Vec2Int<int>;
-    //template<typename T>
-    //Vec2int<T>::Vec2int(int xin, int yin) : Vec2b<T, Vec2int>(xin, yin)
-    //{
-    //
-    //}
 }    
 
 

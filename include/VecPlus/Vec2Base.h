@@ -3,12 +3,11 @@
 
 namespace vecp
 {
-    /** 
-     * @brief Represents a 2D vector with components of type T.
+    /*!
+     * \brief Represents a 2D vector with components of type T.
      * 
-     * This class provides basic operations for 2D vectors such as
-     * calculation of magnitude, distance between two vectors, rotartion
-     * and various arithmetic operations.
+     * This template class provides basic operations for generic 2D vectors 
+     * such as addition, subtraction, multiplication, and boolean comparision.
      * 
      * @tparam T The type of elements in the vector (e.g. float, double, int).
      * 
@@ -20,81 +19,82 @@ namespace vecp
         T x; /// The x-coordinate of the vector.
         T y; /// The y-coordinate of the vector.
         
-        /**
-         * @brief Overload the addition operator (+) for vector addition.
+        /*!
+         * \brief Overload the addition operator (+) for vector addition.
          * 
-         * @param vector The vector to be added to  the current vector.
-         * @return A new vector containing the modified values.
+         * \param vector The vector to be added to  the current vector.
+         * \return A new vector containing the modified values.
          * 
         */
         Derived<T> operator + (const Derived<T>& vector) const;
 
-        /**
-         * @brief Overload the addition assignment operator (+=) for vector addition.
+        /*!
+         * \brief Overload the addition assignment operator (+=) for vector addition.
          * 
-         * @param vector The vector to be added to the current vector.
+         * \param vector The vector to be added to the current vector.
         */
         void operator += (const Derived<T> vector);
         
-        /**
-         * @brief Overload the subtration operator (-) for vector subtraction.
+        /*!
+         * \brief Overload the subtration operator (-) for vector subtraction.
          * 
-         * @param vector The vector to be subtracted from the current vector.
-         * @return A new vector containing the modified values.
+         * \param vector The vector to be subtracted from the current vector.
+         * \return A new vector containing the modified values.
          * 
         */
         Derived<T> operator - (const Derived<T>& vector) const;
 
-        /**
-         * @brief Overload the subtraction assignment operator (-=) for vector subtraction.
+        /*!
+         * \brief Overload the subtraction assignment operator (-=) for vector subtraction.
          * 
-         * @param vector The vector to be subtracted from the current vector.
+         * \param vector The vector to be subtracted from the current vector.
         */
         void operator -= (const Derived<T>& vector);
 
-        /**
-         * @brief Overload the multiplication operator (*) for vector by scalar multiplication.
+        /*!
+         * \brief Overload the multiplication operator (*) for vector by scalar multiplication.
          * 
-         * @param value The scalar value to be multiplied.
-         * @return A new vector containing the modified values.
+         * \param value The scalar value to be multiplied.
+         * \return A new vector containing the modified values.
         */
         Derived<T> operator * (T value) const;
         
-        /**
-         * @brief Overload the multiplication operator (*) for vector by vector multiplication.
+        /*!
+         * \brief Overload the multiplication operator (*) for vector by vector multiplication.
          * 
-         * @param vector The vector to multiple the current vector values by.
-         * @return A new vector containing the modified values.
+         * \param vector The vector to multiple the current vector values by.
+         * \return A new vector containing the modified values.
         */
         Derived<T> operator * (const Derived<T>& vector) const;
         
-        /**
-         * @brief Overload the multiplication operator (*=) for vector by scalar multiplication.
+        /*!
+         * \brief Overload the multiplication operator (*=) for vector by scalar multiplication.
          * 
-         * @param value The scalar value to multiply the current vector by.
+         * \param value The scalar value to multiply the current vector by.
         */
         void operator *= (T value);
 
-        /**
-         * @brief Overload the multiplication operator (*=) for vector by vector multiplication.
+        /*!
+         * \brief Overload the multiplication operator (*=) for vector by vector multiplication.
          * 
-         * @param vector The vector multiply the current vector values by.
+         * \param vector The vector multiply the current vector values by.
         */
         void operator *= (const Derived<T>& vector);
 
-        /**
-         * @brief Overload the equality operator (==) for vector comparison.
+        /*!
+         * \brief Overload the equality operator (==) for vector comparison.
          *
-         * @param vector The vector to compare with.
-         * @return True if both vector components are equal, otherwise false.
+         * \param vector The vector to compare with.
+         * \return True if both vector components are equal, otherwise false.
         */
+
         bool operator == (const Derived<T>& vector);
 
-        /**
-         * @brief Construct a new Vec2 object with given x and y components.
+        /*!
+         * \brief Construct a new Vec2 object with given x and y components.
          * 
-         * @param xin The x component of the vector.
-         * @param yin The y component of the vector.
+         * \param xin The x component of the vector.
+         * \param yin The y component of the vector.
         */
         Vec2Base(T xin = T(), T yin = T()) : x(xin), y(yin) {}
     };

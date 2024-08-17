@@ -202,4 +202,85 @@ namespace Vec2d_Tests
         std::make_tuple(Vec2f(-5.5f, 5.5f), Vec2f(5.5f, -5.5f), false),
         std::make_tuple(Vec2f(6.1f, 0.0f), Vec2f(7.1f, 0.0f), false)
     ));
+
+    class Vec2f_VecVecScaFixture : public testing::TestWithParam<std::tuple<Vec2f, Vec2f, float>>
+    {
+    protected:
+        void SetUp() override
+        {
+            vectorOne = std::get<0>(GetParam());
+            vectorTwo = std::get<1>(GetParam());
+            expected = std::get<2>(GetParam());
+        }
+        Vec2f vectorOne, vectorTwo;
+        float expected;
+    };
+
+    // Vec2f operator / (float scalar) const
+    class Vec2f_DivideByScalarF : public Vec2f_VecScaVecFixture {};
+    TEST_P(Vec2f_DivideByScalarF, Vec2f_DivideByScalar)
+    {
+        Vec2f output = vector / scalar;
+        ASSERT_FLOAT_EQ(expected.x, output.x);
+        ASSERT_FLOAT_EQ(expected.y, output.y);   
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2f_DivideByScalar, Vec2f_DivideByScalarF, testing::Values(
+        std::make_tuple(Vec2f(10.0f, 20.0f), 2.0f, Vec2f(5.0f, 10.0f)),
+        std::make_tuple(Vec2f(-6.6f, 4.4f), -2.2f, Vec2f(3.0f, -2.0f)),
+        std::make_tuple(Vec2f(10.0f, -5.0f), 2.0f, Vec2f(5.0f, -2.5f)),
+        std::make_tuple(Vec2f(8.8f, -7.7f), 4.4f, Vec2f(2.0f, -1.75f)),
+        std::make_tuple(Vec2f(9.0f, 12.0f), 3.0f, Vec2f(3.0f, 4.0f))  
+    ));
+
+    // Vec2f operator / (const Vec2f& vector) const
+    class Vec2f_DivideByVectorF : public Vec2f_VecVecVecFixture {};
+    TEST_P(Vec2f_DivideByVectorF, Vec2f_DivideByVector)
+    {
+        Vec2f output = vectorOne / vectorTwo;
+        ASSERT_FLOAT_EQ(expected.x, output.x);
+        ASSERT_FLOAT_EQ(expected.y, output.y);   
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2f_DivideByVector, Vec2f_DivideByVectorF, testing::Values(
+        std::make_tuple(Vec2f(10.0f, 20.0f), Vec2f(2.0f, 4.0f), Vec2f(5.0f, 5.0f)),
+        std::make_tuple(Vec2f(-6.6f, 4.4f), Vec2f(-2.2f, 2.2f), Vec2f(3.0f, 2.0f)),
+        std::make_tuple(Vec2f(10.0f, -5.0f), Vec2f(2.0f, -5.0f), Vec2f(5.0f, 1.0f)),
+        std::make_tuple(Vec2f(8.8f, -7.7f), Vec2f(4.4f, -7.7f), Vec2f(2.0f, 1.0f))
+    ));
+
+    // void operator /= (float scalar)
+    class Vec2f_DivideEqualsByScalarF : public Vec2f_VecScaVecFixture {};
+    TEST_P(Vec2f_DivideEqualsByScalarF, Vec2f_DivideEqualsByScalar)
+    {
+        vector /= scalar;
+        ASSERT_FLOAT_EQ(expected.x, vector.x);
+        ASSERT_FLOAT_EQ(expected.y, vector.y);   
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2f_DivideEqualsByScalar, Vec2f_DivideEqualsByScalarF, testing::Values(
+        std::make_tuple(Vec2f(10.0f, 20.0f), 2.0f, Vec2f(5.0f, 10.0f)),
+        std::make_tuple(Vec2f(-6.6f, 4.4f), -2.2f, Vec2f(3.0f, -2.0f)),
+        std::make_tuple(Vec2f(10.0f, -5.0f), 2.0f, Vec2f(5.0f, -2.5f)),
+        std::make_tuple(Vec2f(8.8f, -7.7f), 4.4f, Vec2f(2.0f, -1.75f))
+    ));
+
+    // void operator /= (const Vec2f& vector)
+    class Vec2f_DivideEqualsByVectorF : public Vec2f_VecVecVecFixture {};
+    TEST_P(Vec2f_DivideEqualsByVectorF, Vec2f_DivideEqualsByVector)
+    {
+        vectorOne /= vectorTwo;
+        ASSERT_FLOAT_EQ(expected.x, vectorOne.x);
+        ASSERT_FLOAT_EQ(expected.y, vectorOne.y);   
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2f_DivideEqualsByVector, Vec2f_DivideEqualsByVectorF, testing::Values(
+        std::make_tuple(Vec2f(10.0f, 20.0f), Vec2f(2.0f, 4.0f), Vec2f(5.0f, 5.0f)),
+        std::make_tuple(Vec2f(-6.6f, 4.4f), Vec2f(-2.2f, 2.2f), Vec2f(3.0f, 2.0f)),
+        std::make_tuple(Vec2f(10.0f, -5.0f), Vec2f(2.0f, -5.0f), Vec2f(5.0f, 1.0f)),
+        std::make_tuple(Vec2f(8.8f, -7.7f), Vec2f(4.4f, -7.7f), Vec2f(2.0f, 1.0f))
+    ));
+
+
+
 }
