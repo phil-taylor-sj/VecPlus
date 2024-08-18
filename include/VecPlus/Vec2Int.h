@@ -4,7 +4,15 @@
 
 namespace vecp
 {
-
+    /*!
+     * \brief Represents a 2D vector with components of privative integer types.
+     * 
+     * Extends the Vec2Base class with functionaltiy for converting the vector 
+     * into a Vec2Decimal types of either floats or doubles.
+     * 
+     * @tparam T The type of elements in the vector (e.g. float, double, int).
+     * 
+    */
     template<typename T>
     class Vec2Int : public Vec2Base<T, Vec2Int>
     {

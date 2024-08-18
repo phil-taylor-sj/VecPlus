@@ -1,4 +1,4 @@
-![Alt text](https://github.com/phil-taylor-sj/images/VecPlus.png "a title")
+![Logo](https://github.com/phil-taylor-sj/images/vecplus-logo.png "VecPlus Logo")
 
 # VecPlus
 
@@ -6,10 +6,12 @@ VecPlus is a lightweight library of 2-dimensional and 3-dimensional vector class
 I created VecPlus as my own dedicated dependency for projects to avoid duplicating
 the code between multiple projects.
 
+
+
+## Installing as Dependency
+
 To use the library in a CMake build, use FetchContent to retrieve the library 
 directly from its GitHub repository. 
-
-## Installing as dependency
 
 ```
 include(FetchContent)

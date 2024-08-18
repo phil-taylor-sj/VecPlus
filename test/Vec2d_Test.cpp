@@ -249,22 +249,6 @@ namespace Vec2d_Tests
         std::make_tuple(Vec2d(8.8, -7.7), Vec2d(4.4, -7.7), Vec2d(2.0, 1.0))
     ));
 
-    // void operator /= (const Vec2d& vector)
-    class Vec2d_DivideEqualsByVectorF : public Vec2d_VecVecVecFixture {};
-    TEST_P(Vec2d_DivideEqualsByVectorF, Vec2d_DivideEqualsByVector)
-    {
-        vectorOne /= vectorTwo;
-        ASSERT_DOUBLE_EQ(expected.x, vectorOne.x);
-        ASSERT_DOUBLE_EQ(expected.y, vectorOne.y);   
-    }
-
-    INSTANTIATE_TEST_SUITE_P(Vec2d_DivideEqualsByVector, Vec2d_DivideEqualsByVectorF, testing::Values(
-        std::make_tuple(Vec2d(10.0, 20.0), Vec2d(2.0, 4.0), Vec2d(5.0, 5.0)),
-        std::make_tuple(Vec2d(-6.6, 4.4), Vec2d(-2.2, 2.2), Vec2d(3.0, 2.0)),
-        std::make_tuple(Vec2d(10.0, -5.0), Vec2d(2.0, -5.0), Vec2d(5.0, 1.0)),
-        std::make_tuple(Vec2d(8.8, -7.7), Vec2d(4.4, -7.7), Vec2d(2.0, 1.0))
-    ));
-
     // void operator /= (double scalar)
     class Vec2d_DivideEqualsByScalarF : public Vec2d_VecScaVecFixture {};
     TEST_P(Vec2d_DivideEqualsByScalarF, Vec2d_DivideEqualsByScalar)
@@ -280,5 +264,21 @@ namespace Vec2d_Tests
         std::make_tuple(Vec2d(10.0, -5.0), 2.0, Vec2d(5.0, -2.5)),
         std::make_tuple(Vec2d(8.8, -7.7), 4.4, Vec2d(2.0, -1.75)),
         std::make_tuple(Vec2d(9.0, 12.0), 3.0, Vec2d(3.0, 4.0))  // Additional test case
+    ));
+
+    // void operator /= (const Vec2d& vector)
+    class Vec2d_DivideEqualsByVectorF : public Vec2d_VecVecVecFixture {};
+    TEST_P(Vec2d_DivideEqualsByVectorF, Vec2d_DivideEqualsByVector)
+    {
+        vectorOne /= vectorTwo;
+        ASSERT_DOUBLE_EQ(expected.x, vectorOne.x);
+        ASSERT_DOUBLE_EQ(expected.y, vectorOne.y);   
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2d_DivideEqualsByVector, Vec2d_DivideEqualsByVectorF, testing::Values(
+        std::make_tuple(Vec2d(10.0, 20.0), Vec2d(2.0, 4.0), Vec2d(5.0, 5.0)),
+        std::make_tuple(Vec2d(-6.6, 4.4), Vec2d(-2.2, 2.2), Vec2d(3.0, 2.0)),
+        std::make_tuple(Vec2d(10.0, -5.0), Vec2d(2.0, -5.0), Vec2d(5.0, 1.0)),
+        std::make_tuple(Vec2d(8.8, -7.7), Vec2d(4.4, -7.7), Vec2d(2.0, 1.0))
     ));
 }

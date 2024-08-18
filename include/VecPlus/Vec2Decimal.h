@@ -90,7 +90,7 @@ namespace vecp
         T dot(T value) const;
 
         /*!
-         * \brief Calculate dot product of the current vector a vector of two scalar values.
+         * \brief Calculate dot product of the current vector and a vector of two scalar values.
          * 
          * \param xTwo The x scalar value to apply to the current vector.
          * \param yTwo The y scalar valeu to apply to the current vector.
