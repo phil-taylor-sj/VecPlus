@@ -4,23 +4,23 @@
 
 using namespace vecp;
 
-namespace Vec2Int_Tests
+namespace Vec2i_Tests
 {
-    TEST(TestConstructorDefault, SetDefaultValues)
+    TEST(Vec2i_TestConstructorDefault, SetDefaultValues)
     {   
         Vec2i vector = Vec2i();
         ASSERT_EQ(vector.x, 0);
         ASSERT_EQ(vector.y, 0);
     }
 
-    TEST(TestConstructorValues, SetSpecifiedValues)
+    TEST(Vec2i_TestConstructorValues, SetSpecifiedValues)
     {
         Vec2i vector = Vec2i(-3, 4);
         ASSERT_EQ(vector.x, -3);
         ASSERT_EQ(vector.y, 4);
     }
 
-    class VecScaVecFixture : public testing::TestWithParam<std::tuple<Vec2i, int, Vec2i>>
+    class Vec2i_VecScaVecFixture : public testing::TestWithParam<std::tuple<Vec2i, int, Vec2i>>
     {
         protected:
             void SetUp() override
@@ -33,7 +33,7 @@ namespace Vec2Int_Tests
             int scalar;
     };
 
-    class VecVecVecFixture : public testing::TestWithParam<std::tuple<Vec2i, Vec2i, Vec2i>>
+    class Vec2i_VecVecVecFixture : public testing::TestWithParam<std::tuple<Vec2i, Vec2i, Vec2i>>
     {
         protected:
             void SetUp() override
@@ -46,15 +46,15 @@ namespace Vec2Int_Tests
     };
 
     // Vec2i operator + (const Vec2i& vector) const
-    class AddVectorF : public VecVecVecFixture {};
-    TEST_P(AddVectorF, AddVector)
+    class Vec2i_AddVectorF : public Vec2i_VecVecVecFixture {};
+    TEST_P(Vec2i_AddVectorF, Vec2i_AddVector)
     {
         Vec2i output = vectorOne + vectorTwo;
         ASSERT_EQ(expected.x, output.x);
         ASSERT_EQ(expected.y, output.y);
     }
 
-    INSTANTIATE_TEST_SUITE_P(AddVector, AddVectorF, testing::Values(
+    INSTANTIATE_TEST_SUITE_P(Vec2i_AddVector, Vec2i_AddVectorF, testing::Values(
         std::make_tuple(Vec2i(1, 2), Vec2i(3, 4), Vec2i(4, 6)),
         std::make_tuple(Vec2i(-2, 5), Vec2i(7, -3), Vec2i(5, 2)),
         std::make_tuple(Vec2i(0, -8), Vec2i(-4, 6), Vec2i(-4, -2)),
@@ -63,15 +63,15 @@ namespace Vec2Int_Tests
 
 
     // void operator += (const Vec2i& vector)
-    class AddEqualsVectorF : public VecVecVecFixture {};
-    TEST_P(AddEqualsVectorF, AddEqualsVector)
+    class Vec2i_AddEqualsVectorF : public Vec2i_VecVecVecFixture {};
+    TEST_P(Vec2i_AddEqualsVectorF, Vec2i_AddEqualsVector)
     {
         vectorOne += vectorTwo;
         ASSERT_EQ(expected.x, vectorOne.x);
         ASSERT_EQ(expected.y, vectorOne.y);
     }
 
-    INSTANTIATE_TEST_SUITE_P(AddEqualsVector, AddEqualsVectorF, testing::Values(
+    INSTANTIATE_TEST_SUITE_P(Vec2i_AddEqualsVector, Vec2i_AddEqualsVectorF, testing::Values(
         std::make_tuple(Vec2i(1, 2), Vec2i(3, 4), Vec2i(4, 6)),
         std::make_tuple(Vec2i(-2, 5), Vec2i(7, -3), Vec2i(5, 2)),
         std::make_tuple(Vec2i(0, -8), Vec2i(-4, 6), Vec2i(-4, -2)),
@@ -79,15 +79,15 @@ namespace Vec2Int_Tests
     ));
 
     // Vec2i operator - (const Vec2i& vector) const
-    class SubtractVectorF : public VecVecVecFixture {};
-    TEST_P(SubtractVectorF, SubtractVector)
+    class Vec2i_SubtractVectorF : public Vec2i_VecVecVecFixture {};
+    TEST_P(Vec2i_SubtractVectorF, Vec2i_SubtractVector)
     {
         Vec2i output = vectorOne - vectorTwo;
         ASSERT_EQ(expected.x, output.x);
         ASSERT_EQ(expected.y, output.y);
     }
 
-    INSTANTIATE_TEST_SUITE_P(SubtractVector, SubtractVectorF, testing::Values(
+    INSTANTIATE_TEST_SUITE_P(Vec2i_SubtractVector, Vec2i_SubtractVectorF, testing::Values(
         std::make_tuple(Vec2i(5, 7), Vec2i(3, 2), Vec2i(2, 5)),
         std::make_tuple(Vec2i(10, 10), Vec2i(4, 6), Vec2i(6, 4)),
         std::make_tuple(Vec2i(-3, 8), Vec2i(2, -5), Vec2i(-5, 13)),
@@ -95,15 +95,15 @@ namespace Vec2Int_Tests
     ));
 
     // void operator -= (const Vec2i& vector)
-    class SubtractEqualsVectorF : public VecVecVecFixture {};
-    TEST_P(SubtractEqualsVectorF, SubtractEqualsVector)
+    class Vec2i_SubtractEqualsVectorF : public Vec2i_VecVecVecFixture {};
+    TEST_P(Vec2i_SubtractEqualsVectorF, Vec2i_SubtractEqualsVector)
     {
         vectorOne -= vectorTwo;
         ASSERT_EQ(expected.x, vectorOne.x);
         ASSERT_EQ(expected.y, vectorOne.y);
     }
 
-    INSTANTIATE_TEST_SUITE_P(SubtractEqualsVector, SubtractEqualsVectorF, testing::Values(
+    INSTANTIATE_TEST_SUITE_P(Vec2i_SubtractEqualsVector, Vec2i_SubtractEqualsVectorF, testing::Values(
         std::make_tuple(Vec2i(5, 7), Vec2i(3, 2), Vec2i(2, 5)),
         std::make_tuple(Vec2i(10, 10), Vec2i(4, 6), Vec2i(6, 4)),
         std::make_tuple(Vec2i(-3, 8), Vec2i(2, -5), Vec2i(-5, 13)),
@@ -111,15 +111,15 @@ namespace Vec2Int_Tests
     ));
 
     // Vec2i operator * (int scalar) const
-    class MultiplyByScalarF : public VecScaVecFixture {};
-    TEST_P(MultiplyByScalarF, MultiplyByScalar)
+    class Vec2i_MultiplyByScalarF : public Vec2i_VecScaVecFixture {};
+    TEST_P(Vec2i_MultiplyByScalarF, Vec2i_MultiplyByScalar)
     {
         Vec2i output = vector * scalar;
         ASSERT_EQ(expected.x, output.x);
         ASSERT_EQ(expected.y, output.y);   
     }
 
-    INSTANTIATE_TEST_SUITE_P(MultiplyByScalar, MultiplyByScalarF, testing::Values(
+    INSTANTIATE_TEST_SUITE_P(Vec2i_MultiplyByScalar, Vec2i_MultiplyByScalarF, testing::Values(
         std::make_tuple(Vec2i(0, 0), 10, Vec2i(0, 0)),
         std::make_tuple(Vec2i(3, 4), 10, Vec2i(30, 40)),
         std::make_tuple(Vec2i(-6, 4), 5, Vec2i(-30, 20)),
@@ -127,15 +127,15 @@ namespace Vec2Int_Tests
     ));
 
     // Vec2i operator * (const Vec2i& vector) const
-    class MultiplyByVectorF : public VecVecVecFixture {};
-    TEST_P(MultiplyByVectorF, MultiplyByVector)
+    class Vec2i_MultiplyByVectorF : public Vec2i_VecVecVecFixture {};
+    TEST_P(Vec2i_MultiplyByVectorF, Vec2i_MultiplyByVector)
     {
         Vec2i output = vectorOne * vectorTwo;
         ASSERT_EQ(expected.x, output.x);
         ASSERT_EQ(expected.y, output.y);   
     }
 
-    INSTANTIATE_TEST_SUITE_P(MultiplyByVector, MultiplyByVectorF, testing::Values(
+    INSTANTIATE_TEST_SUITE_P(Vec2i_MultiplyByVector, Vec2i_MultiplyByVectorF, testing::Values(
         std::make_tuple(Vec2i(0, 0), Vec2i(10, 10), Vec2i(0, 0)),
         std::make_tuple(Vec2i(3, 4), Vec2i(5, 10), Vec2i(15, 40)),
         std::make_tuple(Vec2i(-6, 4), Vec2i(5, -5), Vec2i(-30, -20)),
@@ -143,15 +143,15 @@ namespace Vec2Int_Tests
     ));
 
     // void operator *= (int scalar)
-    class MultiplyEqualsByScalarF : public VecScaVecFixture {};
-    TEST_P(MultiplyEqualsByScalarF, MultiplyEqualsByScalar)
+    class Vec2i_MultiplyEqualsByScalarF : public Vec2i_VecScaVecFixture {};
+    TEST_P(Vec2i_MultiplyEqualsByScalarF, Vec2i_MultiplyEqualsByScalar)
     {
         vector *= scalar;
         ASSERT_EQ(expected.x, vector.x);
         ASSERT_EQ(expected.y, vector.y);   
     }
     
-    INSTANTIATE_TEST_SUITE_P(MultiplyEqualsByScalar, MultiplyEqualsByScalarF, testing::Values(
+    INSTANTIATE_TEST_SUITE_P(Vec2i_MultiplyEqualsByScalar, Vec2i_MultiplyEqualsByScalarF, testing::Values(
         std::make_tuple(Vec2i(0, 0), 10, Vec2i(0, 0)),
         std::make_tuple(Vec2i(3, 4), 10, Vec2i(30, 40)),
         std::make_tuple(Vec2i(-6, 4), 5, Vec2i(-30, 20)),
@@ -159,22 +159,22 @@ namespace Vec2Int_Tests
     ));
 
     // void operator *= (const Vec2i& vector)
-    class MultiplyEqualsByVectorF : public VecVecVecFixture {};
-    TEST_P(MultiplyEqualsByVectorF, MultiplyEqualsByVector)
+    class Vec2i_MultiplyEqualsByVectorF : public Vec2i_VecVecVecFixture {};
+    TEST_P(Vec2i_MultiplyEqualsByVectorF, Vec2i_MultiplyEqualsByVector)
     {
         vectorOne *= vectorTwo;
         ASSERT_EQ(expected.x, vectorOne.x);
         ASSERT_EQ(expected.y, vectorOne.y);   
     }
     
-    INSTANTIATE_TEST_SUITE_P(MultiplyEqualsByVector, MultiplyEqualsByVectorF, testing::Values(
+    INSTANTIATE_TEST_SUITE_P(Vec2i_MultiplyEqualsByVector, Vec2i_MultiplyEqualsByVectorF, testing::Values(
         std::make_tuple(Vec2i(0, 0), Vec2i(10, 10), Vec2i(0, 0)),
         std::make_tuple(Vec2i(3, 4), Vec2i(5, 10), Vec2i(15, 40)),
         std::make_tuple(Vec2i(-6, 4), Vec2i(5, -5), Vec2i(-30, -20)),
         std::make_tuple(Vec2i(8, -7), Vec2i(-5, -5), Vec2i(-40, 35))
     ));
 
-    class VecVecBoolFixture : public testing::TestWithParam<std::tuple<Vec2i, Vec2i, bool>>
+    class Vec2i_VecVecBoolFixture : public testing::TestWithParam<std::tuple<Vec2i, Vec2i, bool>>
     {
         protected:
             void SetUp() override
@@ -188,15 +188,15 @@ namespace Vec2Int_Tests
     };
 
     // bool operator == (const Vec2i& vector) const
-    class CompareVectorsF : public VecVecBoolFixture {};
-    TEST_P(CompareVectorsF, CompareVectors)
+    class Vec2i_CompareVectorsF : public Vec2i_VecVecBoolFixture {};
+    TEST_P(Vec2i_CompareVectorsF, Vec2i_CompareVectors)
     {
         bool output = vectorOne == vectorTwo;
         ASSERT_EQ(expected, output);
         ASSERT_EQ(expected, output);   
     }
 
-    INSTANTIATE_TEST_SUITE_P(CompareVectors, CompareVectorsF, testing::Values(
+    INSTANTIATE_TEST_SUITE_P(Vec2i_CompareVectors, Vec2i_CompareVectorsF, testing::Values(
         std::make_tuple(Vec2i(-5, 5), Vec2i(-5, 5), true),
         std::make_tuple(Vec2i(0, 0), Vec2i(0, 0), true),
         std::make_tuple(Vec2i(-5, 5), Vec2i(5, -5), false),
@@ -204,7 +204,7 @@ namespace Vec2Int_Tests
     ));
 
 
-    class VecFloatFloatFixture : public testing::TestWithParam<std::tuple<Vec2i, float, float>>
+    class Vec2i_VecFloatFloatFixture : public testing::TestWithParam<std::tuple<Vec2i, float, float>>
     {
         protected:
             void SetUp() override
@@ -218,8 +218,8 @@ namespace Vec2Int_Tests
     };
 
     // Vec2f toFloat() const
-    class ConvertToFloatF : public VecFloatFloatFixture {};
-    TEST_P(ConvertToFloatF, ConvertToFloat)
+    class Vec2i_ConvertToFloatF : public Vec2i_VecFloatFloatFixture {};
+    TEST_P(Vec2i_ConvertToFloatF, Vec2i_ConvertToFloat)
     { 
         ASSERT_EQ(typeid(float), typeid(vector.toFloat().x));
         ASSERT_EQ(typeid(float), typeid(vector.toFloat().y));   
@@ -227,7 +227,7 @@ namespace Vec2Int_Tests
         ASSERT_EQ(expectedY, vector.toFloat().y);   
     }
 
-    INSTANTIATE_TEST_SUITE_P(ConvertToFloat, ConvertToFloatF, testing::Values(
+    INSTANTIATE_TEST_SUITE_P(Vec2i_ConvertToFloat, Vec2i_ConvertToFloatF, testing::Values(
         std::make_tuple(Vec2i(0, 0), 0.f, 0.f),
         std::make_tuple(Vec2i(5, 5), 5.f, 5.f),
         std::make_tuple(Vec2i(-5, -5), -5.f, -5.f),
@@ -235,8 +235,8 @@ namespace Vec2Int_Tests
     ));
 
     // Vec2d toDouble() const
-    class ConvertToDoubleF : public VecFloatFloatFixture {};
-    TEST_P(ConvertToDoubleF, ConvertToDouble)
+    class Vec2i_ConvertToDoubleF : public Vec2i_VecFloatFloatFixture {};
+    TEST_P(Vec2i_ConvertToDoubleF, Vec2i_ConvertToDouble)
     { 
         double expectX = (double)expectedX;
         double expectY = (double)expectedY;
@@ -246,7 +246,7 @@ namespace Vec2Int_Tests
         ASSERT_EQ(expectY, vector.toDouble().y);   
     }
 
-    INSTANTIATE_TEST_SUITE_P(ConvertToDouble, ConvertToDoubleF, testing::Values(
+    INSTANTIATE_TEST_SUITE_P(Vec2i_ConvertToDouble, Vec2i_ConvertToDoubleF, testing::Values(
         std::make_tuple(Vec2i(0, 0), 0., 0.),
         std::make_tuple(Vec2i(5, 5), 5., 5.),
         std::make_tuple(Vec2i(-5, -5), -5., -5.),
