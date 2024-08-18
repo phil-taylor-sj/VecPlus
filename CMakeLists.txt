@@ -23,6 +23,8 @@ target_sources(${PROJECT_NAME}
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/src/${PROJECT_NAME}/Vec2Decimal.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/src/${PROJECT_NAME}/Vec2Int.cpp 
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/${PROJECT_NAME}/Vec3Decimal.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/${PROJECT_NAME}/Vec3Int.cpp 
 )
 
 target_include_directories(${PROJECT_NAME}
@@ -53,7 +55,14 @@ else()
     )
 endif()
 
-set(public_headers include/VecPlus/Vec2.h include/VecPlus/Vec2Decimal.h include/VecPlus/Vec2Int.h)
+set(public_headers 
+    include/VecPlus/Vec2.h 
+    include/VecPlus/Vec2Decimal.h 
+    include/VecPlus/Vec2Int.h
+    include/VecPlus/Vec3.h
+    include/VecPlus/Vec3Int.h
+    include/VecPlus/vec3Decimal.h
+    )
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "${public_headers}")
 
 #install(DIRECTORY include/ DESTINATION include)
