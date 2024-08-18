@@ -18,7 +18,6 @@ namespace vecp
         return Vec2Decimal<double>((double)this->x, (double)this->y);
     }
 
-
     template class Vec2Base<int, Vec2Int>;
 
     template class Vec2Int<int>;

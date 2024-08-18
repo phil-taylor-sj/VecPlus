@@ -40,7 +40,7 @@ namespace vecp
          * 
          * \param angle The angle (in degrees) by which to rotate the vector.
         */
-        void rotate(T angle);
+        Vec2Decimal<T> rotate(T angle) const;
 
 
         /*!
@@ -98,7 +98,21 @@ namespace vecp
         */
         T dot(T xTwo, T yTwo) const;
 
-        using Vec2Base<T, Vec2Decimal>::Vec2Base;
+
+
+        /**
+         * \brief Convert current vector to a Vec2f instance.
+         * 
+         * \return A new vector containing the equivalent float values.
+         */
+        Vec2Decimal<float> toFloat() const;
+        
+        /**
+         * \brief Convert current vector to a Vec2d instance.
+         * 
+         * \return A new vector containing the equivalent double values.
+         */
+        Vec2Decimal<double> toDouble() const;        using Vec2Base<T, Vec2Decimal>::Vec2Base;
         //Vec2fd(T xin = 0., T yin = 0.);
 
     private:

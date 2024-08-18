@@ -216,6 +216,53 @@ namespace Vec2d_Tests
         double expected;
     };
 
+    // float mag() const
+    class Vec2d_MagnitudeF : public Vec2d_VecVecScaFixture {};
+    TEST_P(Vec2d_MagnitudeF, Vec2d_Magnitude)
+    {
+        double output = vectorOne.mag();
+        std::cout << output << std::endl;
+        ASSERT_NEAR(expected, output, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2d_Magnitude, Vec2d_MagnitudeF, testing::Values(
+        std::make_tuple(Vec2d(5., 4.), Vec2d(0., 0.), 6.40312424),
+        std::make_tuple(Vec2d(-8.2, 0.6), Vec2d(0., 0.), 8.221922),
+        std::make_tuple(Vec2d(-8.2, -0.6), Vec2d(0., 0.), 8.221922)
+    ));
+
+    // float mag() const
+    class Vec2d_MagnitudeVectorF : public Vec2d_VecVecScaFixture {};
+    TEST_P(Vec2d_MagnitudeVectorF, Vec2d_MagnitudeVector)
+    {
+        double output = vectorOne.mag(vectorTwo);
+        ASSERT_NEAR(expected, output, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2d_MagnitudeVector, Vec2d_MagnitudeVectorF, testing::Values(
+        std::make_tuple(Vec2d(5., 4.), Vec2d(0., 0.), 6.40312423),
+        std::make_tuple(Vec2d(0., 0.), Vec2d(5., 4.), 6.40312423),
+        std::make_tuple(Vec2d(-8.2, 0.6), Vec2d(5.9, 4.6), 14.656398),
+        std::make_tuple(Vec2d(-8.2, -0.6), Vec2d(-5.9, -4.6), 4.61410880)
+    ));
+
+    // Vec2d rotate(double scalar)
+    class Vec2d_RotateF : public Vec2d_VecScaVecFixture {};
+    TEST_P(Vec2d_RotateF, Vec2d_Rotate)
+    {
+        Vec2d output = vector.rotate(scalar);
+        ASSERT_NEAR(expected.x, output.x, 1E-06);
+        ASSERT_NEAR(expected.y, output.y, 1E-06);
+    } 
+
+    INSTANTIATE_TEST_SUITE_P(Vec2d_Rotate, Vec2d_RotateF, testing::Values(
+        std::make_tuple(Vec2d(5., 5.), 0., Vec2d(5., 5.)),
+        std::make_tuple(Vec2d(5., 0.), 90., Vec2d(0., 5.)),
+        std::make_tuple(Vec2d(5., 0.), 270., Vec2d(0., -5.)),
+        std::make_tuple(Vec2d(5., 0.), 180., Vec2d(-5., 0.))
+    ));
+
+
     // Vec2d operator / (double scalar) const
     class Vec2d_DivideByScalarF : public Vec2d_VecScaVecFixture {};
     TEST_P(Vec2d_DivideByScalarF, Vec2d_DivideByScalar)
@@ -280,5 +327,99 @@ namespace Vec2d_Tests
         std::make_tuple(Vec2d(-6.6, 4.4), Vec2d(-2.2, 2.2), Vec2d(3.0, 2.0)),
         std::make_tuple(Vec2d(10.0, -5.0), Vec2d(2.0, -5.0), Vec2d(5.0, 1.0)),
         std::make_tuple(Vec2d(8.8, -7.7), Vec2d(4.4, -7.7), Vec2d(2.0, 1.0))
+    ));
+
+    // double Vec2d::dot(const Vec2d& vector) const
+    class Vec2d_DotVectorF : public Vec2d_VecVecScaFixture {};
+    TEST_P(Vec2d_DotVectorF, Vec2d_DotVector)
+    {
+        double output = vectorOne.dot(vectorTwo);
+        ASSERT_NEAR(expected, output, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2d_DotVector, Vec2d_DotVectorF, testing::Values(
+        std::make_tuple(Vec2d(5., 0.), Vec2d(0., 4.), 0.),
+        std::make_tuple(Vec2d(5., 4.), Vec2d(6.2, 10.2), 71.8),
+        std::make_tuple(Vec2d(-5, 4.), Vec2d(-6.2, -10.2), -9.8),
+        std::make_tuple(Vec2d(-5., 0.), Vec2d(-10.2, 4.), 51.)
+    ));
+
+    // double Vec2d::dot(double scalar) const
+    class Vec2d_DotScalarF : public Vec2d_VecVecScaFixture {};
+    TEST_P(Vec2d_DotScalarF, Vec2d_DotScalar)
+    {
+        double output = vectorOne.dot(vectorTwo.x);
+        ASSERT_NEAR(expected, output, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2d_DotScalar, Vec2d_DotScalarF, testing::Values(
+        std::make_tuple(Vec2d(5., 4.), Vec2d(6.2, 0.), 55.8),
+        std::make_tuple(Vec2d(-5., -4.), Vec2d(-6.2, 0.), 55.8),
+        std::make_tuple(Vec2d(-5., 4.), Vec2d(6.2, 0.),  -6.2),
+        std::make_tuple(Vec2d(5., -4.), Vec2d(6.2, 0.),  6.2)
+    ));
+
+    // double Vec2d::dot(double xTwo, double yTwo) const
+    class Vec2d_DotScalarScalarF : public Vec2d_VecVecScaFixture {};
+    TEST_P(Vec2d_DotScalarScalarF, Vec2d_DotScalarScalar)
+    {
+        double output = vectorOne.dot(vectorTwo.x, vectorTwo.y);
+        ASSERT_NEAR(expected, output, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2d_DotScalarScalar, Vec2d_DotScalarScalarF, testing::Values(
+        std::make_tuple(Vec2d(5., 0.), Vec2d(0., 4.), 0.),
+        std::make_tuple(Vec2d(5., 4.), Vec2d(6.2, 10.2), 71.8),
+        std::make_tuple(Vec2d(-5, 4.), Vec2d(-6.2, -10.2), -9.8),
+        std::make_tuple(Vec2d(-5., 0.), Vec2d(-10.2, 4.), 51.)
+    ));
+
+        class Vec2d_VecFloatFloatFixture : public testing::TestWithParam<std::tuple<Vec2d, float, float>>
+    {
+        protected:
+            void SetUp() override
+            {
+                vector = std::get<0>(GetParam());
+                expectedX = std::get<1>(GetParam());
+                expectedY = std::get<2>(GetParam());
+            }
+            Vec2d vector;
+            float expectedX, expectedY;
+    };
+
+    // Vec2d Vec2d::toFloat() const
+    class Vec2d_ConvertToFloatF : public Vec2d_VecFloatFloatFixture {};
+    TEST_P(Vec2d_ConvertToFloatF, Vec2f_ConvertToFloat)
+    { 
+        ASSERT_EQ(typeid(float), typeid(vector.toFloat().x));
+        ASSERT_EQ(typeid(float), typeid(vector.toFloat().y));   
+        ASSERT_NEAR(expectedX, vector.toFloat().x, 1E-05);
+        ASSERT_NEAR(expectedY, vector.toFloat().y, 1E-05);   
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2d_ConvertToFloat, Vec2d_ConvertToFloatF, testing::Values(
+        std::make_tuple(Vec2d(0., 0.), 0., 0.),
+        std::make_tuple(Vec2d(5.2, 5.2), 5.2, 5.2),
+        std::make_tuple(Vec2d(-5.2, -5.2), -5.2, -5.2),
+        std::make_tuple(Vec2d(10.09, -10.09), 10.09, -10.09)
+    ));
+
+    // Vec2d Vec2d::toDouble() const
+    class Vec2d_ConvertToDoubleF : public Vec2d_VecFloatFloatFixture {};
+    TEST_P(Vec2d_ConvertToDoubleF, Vec2d_ConvertToDouble)
+    { 
+        double expectX = (double)expectedX;
+        double expectY = (double)expectedY;
+        ASSERT_EQ(typeid(double), typeid(vector.toDouble().x));
+        ASSERT_EQ(typeid(double), typeid(vector.toDouble().y));   
+        ASSERT_NEAR(expectX, vector.toDouble().x, 1E-05);
+        ASSERT_NEAR(expectY, vector.toDouble().y, 1E-05);   
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2d_ConvertToDouble, Vec2d_ConvertToDoubleF, testing::Values(
+        std::make_tuple(Vec2d(0., 0.), 0., 0.),
+        std::make_tuple(Vec2d(5.2, 5.2), 5.2, 5.2),
+        std::make_tuple(Vec2d(-5.2, -5.2), -5.2, -5.2),
+        std::make_tuple(Vec2d(10.09, -10.09), 10.09, -10.09)
     ));
 }

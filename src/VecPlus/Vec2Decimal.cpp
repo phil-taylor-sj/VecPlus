@@ -18,13 +18,14 @@ namespace vecp
     }
 
     template <typename T>
-    void Vec2Decimal<T>::rotate(T angle)
+    Vec2Decimal<T> Vec2Decimal<T>::rotate(T angle) const
     {
-        T xo = this->x;
         T cosAngle = cos(angle * this->m_pi / 180.);
         T sinAngle = sin(angle * this->m_pi / 180.);
-        this->x = this->x * cosAngle - this->y * sinAngle;
-        this->y = xo * sinAngle + this->y * cosAngle;
+        return Vec2Decimal<T> (
+            this->x * cosAngle - this->y * sinAngle,
+            this->x * sinAngle + this->y * cosAngle
+        );
     }
 
     template <typename T>
@@ -69,6 +70,18 @@ namespace vecp
     T Vec2Decimal<T>::dot(T xTwo, T yTwo) const
     {
         return this->x * xTwo + this->y * yTwo;
+    }
+
+    template<typename T>
+    Vec2Decimal<float> Vec2Decimal<T>::toFloat() const
+    {
+        return Vec2Decimal<float>((float)this->x, (float)this->y);
+    }
+
+    template<typename T>
+    Vec2Decimal<double> Vec2Decimal<T>::toDouble() const
+    {
+        return Vec2Decimal<double>((double)this->x, (double)this->y);
     }
 
     template class Vec2Base<float, Vec2Decimal>;
