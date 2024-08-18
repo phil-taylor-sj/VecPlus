@@ -72,6 +72,14 @@ namespace vecp
         return this->x * xTwo + this->y * yTwo;
     }
 
+    template <typename T>
+    Vec2Decimal<T> Vec2Decimal<T>::normalise() const
+    {
+        T magnitude = sqrt(pow(this->x, 2) + pow(this->y, 2));
+        return Vec2Decimal<T>(this->x / magnitude, this->y / magnitude);
+    }
+
+
     template<typename T>
     Vec2Decimal<float> Vec2Decimal<T>::toFloat() const
     {

@@ -357,6 +357,21 @@ namespace Vec2d_Tests
         std::make_tuple(Vec2f(-5.f, 0.f), Vec2f(-10.2f, 4.f), 51.f)
     ));
 
+    // Vec2f Vec2f::normalise() const
+    class Vec2f_NormaliseF : public Vec2f_VecVecVecFixture {};
+    TEST_P(Vec2f_NormaliseF, Vec2f_Normalise)
+    {
+        Vec2f output = vectorOne.normalise();
+        ASSERT_NEAR(expected.x, output.x, 1E-05);
+        ASSERT_NEAR(expected.y, output.y, 1E-05);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2f_Normalise, Vec2f_NormaliseF, testing::Values(
+        std::make_tuple(Vec2f(5.f, 5.f), Vec2f(0.f, 0.f), Vec2f(0.707107f, 0.707107f)),
+        std::make_tuple(Vec2f(-5.f, -5.f), Vec2f(0.f, 0.f), Vec2f(-0.707107f, -0.707107f)),
+        std::make_tuple(Vec2f(-6.f, 8.f), Vec2f(0.f, 0.f), Vec2f(-0.6f, 0.8f))
+    ));
+
     class Vec2f_VecFloatFloatFixture : public testing::TestWithParam<std::tuple<Vec2f, float, float>>
     {
         protected:

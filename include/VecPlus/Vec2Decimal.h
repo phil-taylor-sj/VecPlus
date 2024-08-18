@@ -98,7 +98,12 @@ namespace vecp
         */
         T dot(T xTwo, T yTwo) const;
 
-
+        /*!
+         * \brief Normalise the current vector and return the result as a new vector.
+         *
+         * \return A new vector containing the normalised x and y components.
+        */
+       Vec2Decimal<T> normalise() const;
 
         /**
          * \brief Convert current vector to a Vec2f instance.
@@ -112,7 +117,9 @@ namespace vecp
          * 
          * \return A new vector containing the equivalent double values.
          */
-        Vec2Decimal<double> toDouble() const;        using Vec2Base<T, Vec2Decimal>::Vec2Base;
+        Vec2Decimal<double> toDouble() const;
+
+        using Vec2Base<T, Vec2Decimal>::Vec2Base;
         //Vec2fd(T xin = 0., T yin = 0.);
 
     private:

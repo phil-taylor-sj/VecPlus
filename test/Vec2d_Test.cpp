@@ -387,6 +387,21 @@ namespace Vec2d_Tests
             float expectedX, expectedY;
     };
 
+    // Vec2d Vec2d::normalise() const
+    class Vec2d_NormaliseF : public Vec2d_VecVecVecFixture {};
+    TEST_P(Vec2d_NormaliseF, Vec2d_Normalise)
+    {
+        Vec2d output = vectorOne.normalise();
+        ASSERT_NEAR(expected.x, output.x, 1E-05);
+        ASSERT_NEAR(expected.y, output.y, 1E-05);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2d_Normalise, Vec2d_NormaliseF, testing::Values(
+        std::make_tuple(Vec2d(5., 5.), Vec2d(0., 0.), Vec2d(0.707107, 0.707107)),
+        std::make_tuple(Vec2d(-5., -5.), Vec2d(0., 0.), Vec2d(-0.707107, -0.707107)),
+        std::make_tuple(Vec2d(-6., 8.), Vec2d(0., 0.), Vec2d(-0.6, 0.8))
+    ));
+
     // Vec2d Vec2d::toFloat() const
     class Vec2d_ConvertToFloatF : public Vec2d_VecFloatFloatFixture {};
     TEST_P(Vec2d_ConvertToFloatF, Vec2f_ConvertToFloat)
