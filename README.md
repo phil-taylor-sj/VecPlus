@@ -1,4 +1,4 @@
-![Logo](https://github.com/phil-taylor-sj/images/vecplus-logo.png "VecPlus Logo")
+![Logo](https://github.com/phil-taylor-sj/images/vecplus-logo.png)
 
 # VecPlus
 
