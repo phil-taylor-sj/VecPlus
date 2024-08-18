@@ -1,11 +1,11 @@
 #pragma once
-#include <VecPlus/Vec2Base.h>
+#include <VecPlus/Vec3Base.h>
 
 namespace vecp
 {
 
     /*! 
-     * \brief Represents a 2D vector with components of primative decimal types.
+     * \brief Represents a 3D vector with components of primative decimal types.
      * 
      * Extends the Vec2Base class with functionality for division, rotation, 
      * calculation of mangitude, and calculation of the dot product.
@@ -14,7 +14,7 @@ namespace vecp
      * 
     */
     template <typename T>
-    class Vec2Decimal : public Vec2Base<T, Vec2Decimal>
+    class Vec3Decimal : public Vec3Base<T, Vec3Decimal>
     {
     public:
         
@@ -33,14 +33,14 @@ namespace vecp
          * \return The magnitude of the transform vector.
          * 
         */
-        T mag(const Vec2Decimal<T>& vector) const;
+        T mag(const Vec3Decimal<T>& vector) const;
 
         /*!
          * \brief Apply a rotation to the vector by a given angle.
          * 
          * \param angle The angle (in degrees) by which to rotate the vector.
         */
-        Vec2Decimal<T> rotate(T angle) const;
+        Vec3Decimal<T> rotate(char axis, T angle) const;
 
 
         /*!
@@ -49,7 +49,7 @@ namespace vecp
          * \param value The scalar value to divide the current vector by.
          * \return A new vector containing the modified values.
         */
-        Vec2Decimal<T> operator / (T value) const;
+        Vec3Decimal<T> operator / (T value) const;
 
         /*!
          * \brief Overload the division operator (/) for vector by vector division.
@@ -57,7 +57,7 @@ namespace vecp
          * \param vector The vector to divide the current vector values by.
          * \return A new vector containing the modified values.
         */
-        Vec2Decimal<T> operator / (const Vec2Decimal<T>& vector) const;
+        Vec3Decimal<T> operator / (const Vec3Decimal<T>& vector) const;
         
         /*!
          * \brief Overload the division operator (/=) for vector by scalar division.
@@ -71,7 +71,7 @@ namespace vecp
          * 
          * \param vector The vector to divide the current vector values by.
         */
-        void operator /= (const Vec2Decimal<T>& vector);
+        void operator /= (const Vec3Decimal<T>& vector);
 
         /*!
          * \brief Calculate dot product of the current vector and another vector.
@@ -79,10 +79,10 @@ namespace vecp
          * \param vector The vector to apply to the current vector.
          * \return The dot product of the vectors.
         */
-        T dot(const Vec2Decimal<T>& vector) const;
+        T dot(const Vec3Decimal<T>& vector) const;
 
         /*!
-         * \brief Calculate dot product of the current vector a vector of two identical scalar values.
+         * \brief Calculate dot product of the current vector a vector of three identical scalar values.
          * 
          * \param value The x & y scalar value to apply to the current vector.
          * \return The dot product of the vectors.
@@ -90,48 +90,49 @@ namespace vecp
         T dot(T value) const;
 
         /*!
-         * \brief Calculate dot product of the current vector and a vector of two scalar values.
+         * \brief Calculate dot product of the current vector and a vector of three scalar values.
          * 
          * \param xTwo The x scalar value to apply to the current vector.
          * \param yTwo The y scalar valeu to apply to the current vector.
+         * \param zTwo The z scalar valeu to apply to the current vector.
          * \return The dot product of the vectors.
         */
-        T dot(T xTwo, T yTwo) const;
+        T dot(T xTwo, T yTwo, T zTwo) const;
 
         /*!
          * \brief Normalise the current vector and return the result as a new vector.
          *
          * \return A new vector containing the normalised x and y components.
         */
-        Vec2Decimal<T> normalise() const;
+        Vec3Decimal<T> normalise() const;
 
         /**
-         * \brief Convert current vector to a Vec2f instance.
+         * \brief Convert current vector to a Vec3f instance.
          * 
          * \return A new vector containing the equivalent float values.
          */
-        Vec2Decimal<float> toFloat() const;
+        Vec3Decimal<float> toFloat() const;
         
         /**
-         * \brief Convert current vector to a Vec2d instance.
+         * \brief Convert current vector to a Vec3d instance.
          * 
          * \return A new vector containing the equivalent double values.
          */
-        Vec2Decimal<double> toDouble() const;
+        Vec3Decimal<double> toDouble() const;
 
-        using Vec2Base<T, Vec2Decimal>::Vec2Base;
+        using Vec3Base<T, Vec3Decimal>::Vec3Base;
         //Vec2fd(T xin = 0., T yin = 0.);
 
     private:
         double m_pi = 3.141592653589793;
     }; 
 
-    extern template class Vec2Decimal<float>;
+    extern template class Vec3Decimal<float>;
 
-    extern template class Vec2Decimal<double>;
+    extern template class Vec3Decimal<double>;
 
-    extern template class Vec2Base<float, Vec2Decimal>;
+    extern template class Vec3Base<float, Vec3Decimal>;
 
-    extern template class Vec2Base<double, Vec2Decimal>;
+    extern template class Vec3Base<double, Vec3Decimal>;
 
 }
