@@ -8,7 +8,7 @@ namespace vecp
     template <typename T>
     T Vec3Decimal<T>::mag() const
     {
-        return sqrt(pow(this->x, 2) + pow(this->y, 2) + pow(this->y, 2));
+        return sqrt(pow(this->x, 2) + pow(this->y, 2) + pow(this->z, 2));
     }
 
     template <typename T>

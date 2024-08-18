@@ -11,6 +11,8 @@ set(TEST_SRCS
     Vec2d_Test.cpp
     Vec2f_Test.cpp
     Vec3i_Test.cpp
+    Vec3f_Test.cpp
+    Vec3d_Test.cpp
 )
 
 include(FetchContent)
