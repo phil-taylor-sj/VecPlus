@@ -1,6 +1,6 @@
 #pragma once
 
-//#include <VecPlus/Vec3Decimal.h>
+#include <VecPlus/Vec3Decimal.h>
 #include <VecPlus/Vec3Int.h>
 
 namespace vecp
