@@ -65,6 +65,15 @@ set(public_headers
     )
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "${public_headers}")
 
+foreach(header ${public_headers})
+    file(RELATIVE_PATH header_file_path "${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}" "${header}")
+    get_filename_component(header_directory_path "${header_file_path}" DIRECTORY)
+    install(
+        FILES ${header}
+        DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${header_directory_path}"
+    )
+endforeach()
+
 install(DIRECTORY include/ DESTINATION include)
 set(LIBRARY_OUTPUT_PATH "${PROJECT_BINARY_DIR}/lib")
 install(TARGETS ${PROJECT_NAME} 
