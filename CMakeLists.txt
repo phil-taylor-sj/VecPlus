@@ -78,11 +78,11 @@ install(TARGETS ${PROJECT_NAME}
 
 
 
-#install(EXPORT vecplusLibTargets
-#    FILE vecplusLibConfig.cmake
-#    NAMESPACE vecplus::
-#    DESTINATION lib/cmake/${PROJECT_NAME}Lib
-#)
+install(EXPORT vecplusLibTargets
+    FILE vecplusLibConfig.cmake
+    NAMESPACE vecplus::
+    DESTINATION lib/cmake/${PROJECT_NAME}Lib
+)
 
 
 #target_include_directories(vecplus PUBLIC
