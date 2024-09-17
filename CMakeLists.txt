@@ -16,7 +16,7 @@ else()
 endif()
 
 # Define the library
-add_library(${PROJECT_NAME} STATIC)
+add_library(${PROJECT_NAME} SHARED)
 
 # Add sources
 target_sources(${PROJECT_NAME} 
