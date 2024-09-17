@@ -65,7 +65,7 @@ set(public_headers
     )
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "${public_headers}")
 
-#install(DIRECTORY include/ DESTINATION include)
+install(DIRECTORY include/ DESTINATION include)
 set(LIBRARY_OUTPUT_PATH "${PROJECT_BINARY_DIR}/lib")
 install(TARGETS ${PROJECT_NAME} 
     EXPORT "${PROJECT_NAME}Targets"
