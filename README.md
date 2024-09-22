@@ -8,12 +8,12 @@ VecPlus is a lightweight library of template classes designed to handle 2D and 3
 
 | Class | Description |
 | --- | --- |
-| Vec2i | A vector/point class containing integer type (x, y) components. |
-| Vec2f | A vector/point class containing float type (x, y) components. |
-| Vec2d | A vector/point class containing double type (x, y) components. |
-| Vec3i | A vector/point class containing integer type (x, y, z) components. |
-| Vec3f | A vector/point class containing float type (x, y, z) components. |
-| Vec3d | A vector/point class containing double type (x, y, z) components. |
+| `Vec2i` | A vector/point class containing integer type (x, y) components. |
+| `Vec2f` | A vector/point class containing float type (x, y) components. |
+| `Vec2d` | A vector/point class containing double type (x, y) components. |
+| `Vec3i` | A vector/point class containing integer type (x, y, z) components. |
+| `Vec3f` | A vector/point class containing float type (x, y, z) components. |
+| `Vec3d` | A vector/point class containing double type (x, y, z) components. |
 
 | Method | Description | Owner Classes |
 | --- | --- | --- |
@@ -24,7 +24,16 @@ VecPlus is a lightweight library of template classes designed to handle 2D and 3
 | `toFloat()` | Convert the current vector to a vector of float type components. Return a new vector. | Vec2i, Vec3i |
 | `toDouble()` | Convert the current vector to a vector of double type components. Return a new vector. | Vec2i, Vec3i |
 
-
+| Operator | Description | Owner Classes |
+| --- | --- | --- |
+| `+ ` |  | All | 
+| `+=` |  | All | 
+| `-` |  | All | 
+| `-=` |  | All |
+| `*` | | All |
+| `*=` | | All |
+| `/` | | All |
+| `/=` | | All |
 
 ## Installing as Dependency
 
