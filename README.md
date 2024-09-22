@@ -19,6 +19,8 @@ VecPlus is a lightweight library of template classes designed to handle 2D and 3
 | --- | --- | --- |
 | `mag()` | Calculate the magnitude of the current vector.  | Vec2f, Vec2d, Vec3f, Vec3d |
 | `mag(Vec...)` | Calculate the magnitude of vector obtained by subtracting the vector argument from the current vector. OR. Calculate the distance between two points. | Vec2f, Vec2d, Vec3f, Vec3d |
+| `rotate(Scalar)` |   | Vec2f, Vec2d, Vec3f, Vec3d |
+| `rotate(Char, Scalar)` | | Vec2f, Vec2d, Vec3f, Vec3d |
 | `dot(Scalar)` | Calculate the dot product of the current vector and a vector of values all equal to the scalar argument (int, float, double).  | Vec2f, Vec2d, Vec3f, Vec3d |
 | `dot(Vec...)` | Calculate the dot product of the current vector and the vector argument. | Vec2f, Vec2d, Vec3f, Vec3d |
 | `toFloat()` | Convert the current vector to a vector of float type components. Return a new vector. | Vec2i, Vec3i |
