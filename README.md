@@ -34,8 +34,8 @@ VecPlus is a lightweight library of template classes designed to handle 2D and 3
 | `-=` |  | All |
 | `*` | | All |
 | `*=` | | All |
-| `/` | | All |
-| `/=` | | All |
+| `/` | | Vec2f, Vec2d, Vec3f, Vec3d |
+| `/=` | | Vec2f, Vec2d, Vec3f, Vec3d |
 
 ## Installing as Dependency
 
