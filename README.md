@@ -2,9 +2,27 @@
 
 # VecPlus
 
-VecPlus is a lightweight library of 2-dimensional and 3-dimensional vector classes.
-I created VecPlus as my own dedicated dependency for projects to avoid duplicating
-the code between multiple projects.
+VecPlus is a lightweight library of template classes designed to handle 2D and 3D vectors or points in Cartesian coordinates.
+
+## Features
+
+| Class | Description |
+| --- | --- |
+| Vec2i | A vector/point class containing integer type (x, y) components. |
+| Vec2f | A vector/point class containing float type (x, y) components. |
+| Vec2d | A vector/point class containing double type (x, y) components. |
+| Vec3i | A vector/point class containing integer type (x, y, z) components. |
+| Vec3f | A vector/point class containing float type (x, y, z) components. |
+| Vec3d | A vector/point class containing double type (x, y, z) components. |
+
+| Method | Description | Owner Classes |
+| --- | --- | --- |
+| `mag()` | Calculate the magnitude of the current vector.  | Vec2f, Vec2d, Vec3f, Vec3d |
+| `mag(Vec...)` | Calculate the magnitude of vector obtained by subtracting the vector argument from the current vector. OR. Calculate the distance between two points. | Vec2f, Vec2d, Vec3f, Vec3d |
+| `dot(Scalar)` | Calculate the dot product of the current vector and a vector of values all equal to the scalar argument (int, float, double).  | Vec2f, Vec2d, Vec3f, Vec3d |
+| `dot(Vec...)` | Calculate the dot product of the current vector and the vector argument. | Vec2f, Vec2d, Vec3f, Vec3d |
+| `toFloat()` | Convert the current vector to a vector of float type components. Return a new vector. | Vec2i, Vec3i |
+| `toDouble()` | Convert the current vector to a vector of double type components. Return a new vector. | Vec2i, Vec3i |
 
 
 
