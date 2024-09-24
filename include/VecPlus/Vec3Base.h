@@ -20,6 +20,15 @@ namespace vecp
         T y; /// The y-coordinate of the vector.
         T z; /// The z-coordiante of the vector
         
+
+        /*!
+         * \brief Get the absolute values of each component.
+         * 
+         * \return A new vector containing the absolute values.
+         * 
+        */
+        Derived<T> abs() const;
+        
         /*!
          * \brief Overload the addition operator (+) for vector addition.
          * 

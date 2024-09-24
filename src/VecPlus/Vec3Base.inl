@@ -4,6 +4,12 @@ namespace vecp
 {
 
     template <typename T, template <typename> class Derived>
+    Derived<T> Vec3Base<T, Derived>::abs() const
+    {
+        return Derived<T>(std::abs(this->x), std::abs(this->y), std::abs(this->z));
+    }
+
+    template <typename T, template <typename> class Derived>
     Derived<T> Vec3Base<T, Derived>::operator + (const Derived<T>& vector) const
     {
         return Derived<T>(this->x + vector.x, this->y + vector.y, this->z + vector.z);

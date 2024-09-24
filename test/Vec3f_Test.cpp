@@ -256,6 +256,38 @@ namespace Vec3f_Tests
         std::make_tuple(Vec3f(-8.2f, -0.6f, 2.5f), Vec3f(-5.9f, -4.6f, 1.3f), 4.767598976f)
     ));
 
+    // Vec3f floor() const
+    class Vec3f_FloorF : public Vec3f_VecScaVecFixture {};
+    TEST_P(Vec3f_FloorF, Vec3f_Floor)
+    {
+        Vec3f output = vector.floor();
+        ASSERT_NEAR(expected.x, output.x, 1E-06);
+        ASSERT_NEAR(expected.y, output.y, 1E-06);
+        ASSERT_NEAR(expected.z, output.z, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec3f_Floor, Vec3f_FloorF, testing::Values(
+        std::make_tuple(Vec3f(5.45f, 4.667f, 3.1345f), 0.f, Vec3f(5.f, 4.f, 3.f)),
+        std::make_tuple(Vec3f(-0.24f, 0.998f, -5.677f), 0.f, Vec3f(-1.f, 0.f, -6.f)),
+        std::make_tuple(Vec3f(-4.998f, 12.3535f, -2.001f), 0.f, Vec3f(-5.f, 12.f, -3.f))
+    ));
+
+    // Vec3f floorAbs() const
+    class Vec3f_FloorAbsF : public Vec3f_VecScaVecFixture {};
+    TEST_P(Vec3f_FloorAbsF, Vec3f_FloorAbs)
+    {
+        Vec3f output = vector.floorAbs();
+        ASSERT_NEAR(expected.x, output.x, 1E-06);
+        ASSERT_NEAR(expected.y, output.y, 1E-06);
+        ASSERT_NEAR(expected.z, output.z, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec3f_FloorAbs, Vec3f_FloorAbsF, testing::Values(
+        std::make_tuple(Vec3f(5.45f, 4.667f, 3.1345f), 0.f, Vec3f(5.f, 4.f, 3.f)),
+        std::make_tuple(Vec3f(-0.24f, 0.998f, -5.677f), 0.f, Vec3f(0.f, 0.f, -5.f)),
+        std::make_tuple(Vec3f(-4.998f, 12.3535f, -2.001f), 0.f, Vec3f(-4.f, 12.f, -2.f))
+    ));
+
     // Vec3f operator / (float scalar) const
     class Vec3f_DivideByScalarF : public Vec3f_VecScaVecFixture {};
     TEST_P(Vec3f_DivideByScalarF, Vec3f_DivideByScalar)

@@ -9,7 +9,7 @@ namespace vecp
      * This template class provides basic operations for generic 2D vectors 
      * such as addition, subtraction, multiplication, and boolean comparision.
      * 
-     * @tparam T The type of elements in the vector (e.g. float, double, int).
+     * \tparam T The type of elements in the vector (e.g. float, double, int).
      * 
     */
     template <typename T, template <typename> class Derived>
@@ -18,7 +18,15 @@ namespace vecp
     public:
         T x; /// The x-coordinate of the vector.
         T y; /// The y-coordinate of the vector.
-        
+
+        /*!
+         * \brief Get the absolute values of each component.
+         * 
+         * \return A new vector containing the absolute values.
+         * 
+        */
+        Derived<T> abs() const;
+
         /*!
          * \brief Overload the addition operator (+) for vector addition.
          * 

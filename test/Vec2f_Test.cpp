@@ -261,6 +261,38 @@ namespace Vec2d_Tests
         std::make_tuple(Vec2f(5.f, 0.f), 180.f, Vec2f(-5.f, 0.f))
     ));
 
+    // Vec2f floor() const
+    class Vec2f_FloorF : public Vec2f_VecScaVecFixture {};
+    TEST_P(Vec2f_FloorF, Vec2f_Floor)
+    {
+        Vec2f output = vector.floor();
+        ASSERT_NEAR(expected.x, output.x, 1E-06);
+        ASSERT_NEAR(expected.y, output.y, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2f_Floor, Vec2f_FloorF, testing::Values(
+        std::make_tuple(Vec2f(5.45f, 4.667f), 0.f, Vec2f(5.f, 4.f)),
+        std::make_tuple(Vec2f(-0.24f, 0.998f), 0.f, Vec2f(-1.f, 0.f)),
+        std::make_tuple(Vec2f(-4.998f, 12.35345f), 0.f, Vec2f(-5.f, 12.f)),
+        std::make_tuple(Vec2f( -5.677f, -2.001f), 0.f, Vec2f(-6.f, -3.f))
+    ));
+
+    // Vec2f floorAbs() const
+    class Vec2f_FloorAbsF : public Vec2f_VecScaVecFixture {};
+    TEST_P(Vec2f_FloorAbsF, Vec2f_FloorAbs)
+    {
+        Vec2f output = vector.floorAbs();
+        ASSERT_NEAR(expected.x, output.x, 1E-06);
+        ASSERT_NEAR(expected.y, output.y, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2f_FloorAbs, Vec2f_FloorAbsF, testing::Values(
+        std::make_tuple(Vec2f(5.45f, 4.667f), 0., Vec2f(5., 4.)),
+        std::make_tuple(Vec2f(-0.24, 0.998f), 0., Vec2f(0., 0.)),
+        std::make_tuple(Vec2f(-4.998, 12.3535f), 0., Vec2f(-4., 12.)),
+        std::make_tuple(Vec2f(-5.677, -2.001), 0., Vec2f(-5., -2.)) 
+    ));
+
     // Vec2f operator / (float scalar) const
     class Vec2f_DivideByScalarF : public Vec2f_VecScaVecFixture {};
     TEST_P(Vec2f_DivideByScalarF, Vec2f_DivideByScalar)
