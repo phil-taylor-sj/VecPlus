@@ -65,6 +65,26 @@ namespace vecp
     }
 
     template <typename T>
+    Vec3Decimal<T> Vec3Decimal<T>::ceil() const
+    {
+        return Vec3Decimal<T>(
+                std::ceil(this->x),
+                std::ceil(this->y),
+                std::ceil(this->z)
+            );
+    }
+
+    template <typename T>
+    Vec3Decimal<T> Vec3Decimal<T>::ceilAbs() const
+    {
+        return Vec3Decimal<T>(
+                (this->x < T()) ? std::floor(this->x) : std::ceil(this->x),
+                (this->y < T()) ? std::floor(this->y) : std::ceil(this->y),
+                (this->z < T()) ? std::floor(this->z) : std::ceil(this->z)
+            );
+    }
+
+    template <typename T>
     Vec3Decimal<T> Vec3Decimal<T>::operator / (T value) const
     {
         return Vec3Decimal<T>(this->x / value, this->y / value, this->z / value);

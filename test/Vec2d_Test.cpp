@@ -294,6 +294,38 @@ namespace Vec2d_Tests
         std::make_tuple(Vec2d(-5.677, -2.001), 0., Vec2d(-5., -2.)) 
     ));
 
+    // Vec2d ceil() const
+    class Vec2d_CeilF : public Vec2d_VecScaVecFixture {};
+    TEST_P(Vec2d_CeilF, Vec2d_Ceil)
+    {
+        Vec2d output = vector.ceil();
+        ASSERT_NEAR(expected.x, output.x, 1E-06);
+        ASSERT_NEAR(expected.y, output.y, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2d_Ceil, Vec2d_CeilF, testing::Values(
+        std::make_tuple(Vec2d(5.45, 4.667), 0., Vec2d(6., 5.)),
+        std::make_tuple(Vec2d(-0.24, 0.998), 0., Vec2d(0., 1.)),
+        std::make_tuple(Vec2d(-4.998, 12.35345), 0., Vec2d(-4., 13.)),
+        std::make_tuple(Vec2d( -5.677, -2.001), 0., Vec2d(-5., -2.))
+    ));
+
+    // Vec2d ceilAbs() const
+    class Vec2d_CeilAbsF : public Vec2d_VecScaVecFixture {};
+    TEST_P(Vec2d_CeilAbsF, Vec2d_CeilAbs)
+    {
+        Vec2d output = vector.ceilAbs();
+        ASSERT_NEAR(expected.x, output.x, 1E-06);
+        ASSERT_NEAR(expected.y, output.y, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2d_CeilAbs, Vec2d_CeilAbsF, testing::Values(
+        std::make_tuple(Vec2d(5.45, 4.667), 0., Vec2d(6., 5.)),
+        std::make_tuple(Vec2d(-0.24, 0.998), 0., Vec2d(-1., 1.)),
+        std::make_tuple(Vec2d(-4.998, 12.35345), 0., Vec2d(-5., 13.)),
+        std::make_tuple(Vec2d(-5.677, -2.001), 0., Vec2d(-6., -3.)) 
+    ));
+
 
     // Vec2d operator / (double scalar) const
     class Vec2d_DivideByScalarF : public Vec2d_VecScaVecFixture {};

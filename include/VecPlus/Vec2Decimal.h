@@ -46,16 +46,30 @@ namespace vecp
         /*!
          * \brief Round each component down to the nearest integer.
          * 
-         * \return A new vector containing the floored compoent.
+         * \return A new vector containing the floored compoents.
         */
         Vec2Decimal<T> floor() const;
 
         /*!
          * \brief Round each component towards zero to the nearest integer.
          * 
-         * \return A new vector containing the floored compoent.
+         * \return A new vector containing the floored compoents.
         */
         Vec2Decimal<T> floorAbs() const;
+
+        /*!
+         * \brief Round each component up to the nearest integer.
+         * 
+         * \return A new vector containing the rounded compoents.
+        */
+        Vec2Decimal<T> ceil() const;
+
+        /*!
+         * \brief Round each component away from zero to the nearest integer.
+         * 
+         * \return A new vector containing the rounded compoents.
+        */
+        Vec2Decimal<T> ceilAbs() const;
 
 
         /*!

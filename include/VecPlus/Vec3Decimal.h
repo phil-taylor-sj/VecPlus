@@ -57,6 +57,20 @@ namespace vecp
         Vec3Decimal<T> floorAbs() const;
 
         /*!
+         * \brief Round each component up to the nearest integer.
+         * 
+         * \return A new vector containing the rounded compoents.
+        */
+        Vec3Decimal<T> ceil() const;
+
+        /*!
+         * \brief Round each component away from zero to the nearest integer.
+         * 
+         * \return A new vector containing the rounded compoents.
+        */
+        Vec3Decimal<T> ceilAbs() const;
+
+        /*!
          * \brief Overload the division operator (/) for vector by scalar division.
          * 
          * \param value The scalar value to divide the current vector by.

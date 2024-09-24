@@ -288,6 +288,40 @@ namespace Vec3f_Tests
         std::make_tuple(Vec3f(-4.998f, 12.3535f, -2.001f), 0.f, Vec3f(-4.f, 12.f, -2.f))
     ));
 
+
+   // Vec3d ceil() const
+    class Vec3f_CeilF : public Vec3f_VecScaVecFixture {};
+    TEST_P(Vec3f_CeilF, Vec3d_Ceil)
+    {
+        Vec3f output = vector.ceil();
+        ASSERT_NEAR(expected.x, output.x, 1E-06);
+        ASSERT_NEAR(expected.y, output.y, 1E-06);
+        ASSERT_NEAR(expected.z, output.z, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec3f_Ceil, Vec3f_CeilF, testing::Values(
+        std::make_tuple(Vec3f(5.45f, 4.667f, 3.1345f), 0.f, Vec3f(6.f, 5.f, 4.f)),
+        std::make_tuple(Vec3f(-0.24f, 0.998f, -5.677f), 0.f, Vec3f(0.f, 1.f, -5.f)),
+        std::make_tuple(Vec3f(-4.998f, 12.3535f, -2.001f), 0.f, Vec3f(-4.f, 13.f, -2.f))
+    ));
+
+    // Vec3f ceilAbs() const
+    class Vec3f_CeilAbsF : public Vec3f_VecScaVecFixture {};
+    TEST_P(Vec3f_CeilAbsF, Vec3f_CeilAbs)
+    {
+        Vec3f output = vector.ceilAbs();
+        ASSERT_NEAR(expected.x, output.x, 1E-06);
+        ASSERT_NEAR(expected.y, output.y, 1E-06);
+        ASSERT_NEAR(expected.z, output.z, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec3f_CeilAbs, Vec3f_CeilAbsF, testing::Values(
+        std::make_tuple(Vec3f(5.45f, 4.667f, 3.1345f), 0.f, Vec3f(6.f, 5.f, 4.f)),
+        std::make_tuple(Vec3f(-0.24f, 0.998f, -5.677f), 0.f, Vec3f(-1.f, 1.f, -6.f)),
+        std::make_tuple(Vec3f(-4.998f, 12.3535f, -2.001f), 0.f, Vec3f(-5.f, 13.f, -3.f))
+    ));
+
+
     // Vec3f operator / (float scalar) const
     class Vec3f_DivideByScalarF : public Vec3f_VecScaVecFixture {};
     TEST_P(Vec3f_DivideByScalarF, Vec3f_DivideByScalar)

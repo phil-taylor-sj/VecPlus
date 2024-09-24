@@ -357,6 +357,39 @@ namespace Vec3d_Tests
         std::make_tuple(Vec3d(-4.998, 12.35345, -2.001), 0., Vec3d(-4., 12., -2.))
     ));
 
+   // Vec3d ceil() const
+    class Vec3d_CeilF : public Vec3d_VecScaVecFixture {};
+    TEST_P(Vec3d_CeilF, Vec3d_Ceil)
+    {
+        Vec3d output = vector.ceil();
+        ASSERT_NEAR(expected.x, output.x, 1E-06);
+        ASSERT_NEAR(expected.y, output.y, 1E-06);
+        ASSERT_NEAR(expected.z, output.z, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec3d_Ceil, Vec3d_CeilF, testing::Values(
+        std::make_tuple(Vec3d(5.45, 4.667, 3.1345), 0., Vec3d(6., 5., 4.)),
+        std::make_tuple(Vec3d(-0.24, 0.998, -5.677), 0., Vec3d(0., 1., -5.)),
+        std::make_tuple(Vec3d(-4.998, 12.35345, -2.001), 0., Vec3d(-4., 13., -2.))
+    ));
+
+    // Vec3d ceilAbs() const
+    class Vec3d_CeilAbsF : public Vec3d_VecScaVecFixture {};
+    TEST_P(Vec3d_CeilAbsF, Vec3d_CeilAbs)
+    {
+        Vec3d output = vector.ceilAbs();
+        ASSERT_NEAR(expected.x, output.x, 1E-06);
+        ASSERT_NEAR(expected.y, output.y, 1E-06);
+        ASSERT_NEAR(expected.z, output.z, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec3d_CeilAbs, Vec3d_CeilAbsF, testing::Values(
+        std::make_tuple(Vec3d(5.45, 4.667, 3.1345), 0., Vec3d(6., 5., 4.)),
+        std::make_tuple(Vec3d(-0.24, 0.998, -5.677), 0., Vec3d(-1., 1., -6.)),
+        std::make_tuple(Vec3d(-4.998, 12.35345, -2.001), 0., Vec3d(-5., 13., -3.))
+    ));
+
+
     // double Vec3d::dot(const Vec3d& vector) const
     class Vec3d_DotVectorF : public Vec3d_VecVecScaFixture {};
     TEST_P(Vec3d_DotVectorF, Vec3d_DotVector)
