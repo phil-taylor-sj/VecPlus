@@ -1,5 +1,6 @@
 #pragma once
 #include <cmath>
+#include <algorithm>
 
 namespace vecp
 {
@@ -26,6 +27,22 @@ namespace vecp
          * 
         */
         Derived<T> abs() const;
+
+        /*!
+         * \brief Get the maximum value of all components.
+         * 
+         * \return Returns the maximum value.
+         * 
+        */
+        T max() const;
+
+        /*!
+         * \brief Get the minimum value of all components.
+         * 
+         * \return Returns the minimum value.
+         * 
+        */
+        T min() const;
 
         /*!
          * \brief Overload the addition operator (+) for vector addition.

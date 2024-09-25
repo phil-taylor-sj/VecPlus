@@ -47,6 +47,61 @@ namespace Vec3i_Tests
             Vec3i vectorOne, vectorTwo, expected;
     };
 
+   class Vec3i_VecScaScaFixture : public testing::TestWithParam<std::tuple<Vec3i, int, int>>
+    {
+        protected:
+            void SetUp() override
+            {
+                vector = std::get<0>(GetParam());
+                scalar = std::get<1>(GetParam());
+                expected = std::get<2>(GetParam());
+            }
+            Vec3i vector;
+            int scalar, expected;
+    };
+
+    class Vec3i_AbsF : public Vec3i_VecScaVecFixture {};
+    TEST_P(Vec3i_AbsF, Vec3i_Abs)
+    {
+        Vec3i output = vector.abs();
+        ASSERT_EQ(expected.x, output.x);
+        ASSERT_EQ(expected.y, output.y);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec3i_Abs, Vec3i_AbsF, testing::Values(
+        std::make_tuple(Vec3i(0, 0, 0), 0, Vec3i(0, 0, 0)),
+        std::make_tuple(Vec3i(-2, 5, -8), 0, Vec3i(2, 5, 8)),
+        std::make_tuple(Vec3i(-16, -8, -10), 0, Vec3i(16, 8, 10))
+    ));
+
+    class Vec3i_MaxF : public Vec3i_VecScaScaFixture {};
+    TEST_P(Vec3i_MaxF, Vec3i_Max)
+    {
+        int output = vector.max();
+        ASSERT_EQ(expected, output);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec3i_Max, Vec3i_MaxF, testing::Values(
+        std::make_tuple(Vec3i(0, 0, 0), 0, 0),
+        std::make_tuple(Vec3i(-2, 5, 5), 0, 5),
+        std::make_tuple(Vec3i(0, -16, -8), 0, 0),
+        std::make_tuple(Vec3i(8, -8, -10), 0, 8) 
+    ));
+
+    class Vec3i_MinF : public Vec3i_VecScaScaFixture {};
+    TEST_P(Vec3i_MinF, Vec3i_Min)
+    {
+        int output = vector.min();
+        ASSERT_EQ(expected, output);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec3i_Min, Vec3i_MinF, testing::Values(
+        std::make_tuple(Vec3i(0, 0, 0), 0, 0),
+        std::make_tuple(Vec3i(2, 5, 2), 0, 2),
+        std::make_tuple(Vec3i(0, -16, -8), 0, -16),
+        std::make_tuple(Vec3i(8, 10, -10), 0, -10) 
+    ));
+
     // Vec3i operator + (const Vec3i& vector) const
     class Vec3i_AddVectorF : public Vec3i_VecVecVecFixture {};
     TEST_P(Vec3i_AddVectorF, Vec3i_AddVector)

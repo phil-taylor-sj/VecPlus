@@ -10,6 +10,18 @@ namespace vecp
     }
 
     template <typename T, template <typename> class Derived>
+    T Vec2Base<T, Derived>::max() const
+    {
+        return std::max(this->x, this->y);
+    }
+
+    template <typename T, template <typename> class Derived>
+    T Vec2Base<T, Derived>::min() const
+    {
+        return std::min(this->x, this->y);
+    }
+
+    template <typename T, template <typename> class Derived>
     Derived<T> Vec2Base<T, Derived>::operator + (const Derived<T>& vector) const
     {
         return Derived<T>(this->x + vector.x, this->y + vector.y);

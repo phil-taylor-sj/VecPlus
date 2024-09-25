@@ -46,6 +46,64 @@ namespace Vec2d_Tests
         Vec2f vectorOne, vectorTwo, expected;
     };
 
+    class Vec2f_VecScaScaFixture : public testing::TestWithParam<std::tuple<Vec2f, float, float>>
+    {
+    protected:
+        void SetUp() override
+        {
+            vector = std::get<0>(GetParam());
+            scalar = std::get<1>(GetParam());
+            expected = std::get<2>(GetParam());
+        }
+        Vec2f vector;
+        float scalar, expected;
+    };
+
+    class Vec2f_AbsF : public Vec2f_VecScaVecFixture {};
+    TEST_P(Vec2f_AbsF, Vec2f_Abs)
+    {
+        Vec2f output = vector.abs();
+        ASSERT_EQ(expected.x, output.x);
+        ASSERT_EQ(expected.y, output.y);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2f_Abs, Vec2f_AbsF, testing::Values(
+        std::make_tuple(Vec2f(0.f, 0.f), 0.f, Vec2f(0.f, 0.f)),
+        std::make_tuple(Vec2f(-2.5f, 5.5f), 0.f, Vec2f(2.5f, 5.5f)),
+        std::make_tuple(Vec2f(-16.4f, -8.4f), 0.f, Vec2f(16.4f, 8.4f)),
+        std::make_tuple(Vec2f(8.2f, -10.2f), 0.f, Vec2f(8.2f, 10.2f)) 
+    ));
+
+    class Vec2f_MaxF : public Vec2f_VecScaScaFixture {};
+    TEST_P(Vec2f_MaxF, Vec2f_Max)
+    {
+        float output = vector.max();
+        ASSERT_EQ(expected, output);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2f_Max, Vec2f_MaxF, testing::Values(
+        std::make_tuple(Vec2f(0.f, 0.f), 0.f, 0.f),
+        std::make_tuple(Vec2f(2.4f, 2.5f), 0.f, 2.5f),
+        std::make_tuple(Vec2f(-2.5f, 2.5f), 0.f, 2.5f),
+        std::make_tuple(Vec2f(-8.6f, -8.5f), 0.f, -8.5f),
+        std::make_tuple(Vec2f(10.4f, -10.5f), 0.f, 10.4f) 
+    ));
+
+    class Vec2f_MinF : public Vec2f_VecScaScaFixture {};
+    TEST_P(Vec2f_MinF, Vec2f_Min)
+    {
+        float output = vector.min();
+        ASSERT_EQ(expected, output);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2f_Min, Vec2f_MinF, testing::Values(
+        std::make_tuple(Vec2f(0.f, 0.f), 0.f, 0.f),
+        std::make_tuple(Vec2f(2.4f, 2.5f), 0.f, 2.4f),
+        std::make_tuple(Vec2f(-2.5f, 2.5f), 0.f, -2.5f),
+        std::make_tuple(Vec2f(-8.6f, -8.5f), 0.f, -8.6f),
+        std::make_tuple(Vec2f(10.4f, -10.5f), 0.f, -10.5f) 
+    ));
+
     // Vec2f operator + (const Vec2f& vector) const
     class Vec2f_AddVectorF : public Vec2f_VecVecVecFixture {};
     TEST_P(Vec2f_AddVectorF, Vec2f_AddVector)

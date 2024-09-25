@@ -50,6 +50,63 @@ namespace Vec3f_Tests
         Vec3f vectorOne, vectorTwo, expected;
     };
 
+    class Vec3f_VecScaScaFixture : public testing::TestWithParam<std::tuple<Vec3f, float, float>>
+    {
+    protected:
+        void SetUp() override
+        {
+            vector = std::get<0>(GetParam());
+            scalar = std::get<1>(GetParam());
+            expected = std::get<2>(GetParam());
+        }
+        Vec3f vector;
+        float scalar, expected;
+    };
+
+    class Vec3f_AbsF : public Vec3f_VecScaVecFixture {};
+    TEST_P(Vec3f_AbsF, Vec3f_Abs)
+    {
+        Vec3f output = vector.abs();
+        ASSERT_EQ(expected.x, output.x);
+        ASSERT_EQ(expected.y, output.y);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec3f_Abs, Vec3f_AbsF, testing::Values(
+        std::make_tuple(Vec3f(0.f, 0.f, 0.f), 0.f, Vec3f(0.f, 0.f, 0.f)),
+        std::make_tuple(Vec3f(-2.5f, 5.5f, 8.2f), 0.f, Vec3f(2.5f, 5.5f, 8.2f)),
+        std::make_tuple(Vec3f(-16.4f, -8.4f, -10.2f), 0.f, Vec3f(16.4f, 8.4f, 10.2f))
+    ));
+
+    class Vec3f_MaxF : public Vec3f_VecScaScaFixture {};
+    TEST_P(Vec3f_MaxF, Vec3f_Max)
+    {
+        float output = vector.max();
+        ASSERT_EQ(expected, output);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec3f_Max, Vec3f_MaxF, testing::Values(
+        std::make_tuple(Vec3f(0.f, 0.f, 0.f), 0.f, 0.f),
+        std::make_tuple(Vec3f(2.4f, 2.5f, 2.5f), 0.f, 2.5f),
+        std::make_tuple(Vec3f(-2.5f, 0.f, 2.5f), 0.f, 2.5f),
+        std::make_tuple(Vec3f(-8.4f, -8.6f, -8.5f), 0.f, -8.4f),
+        std::make_tuple(Vec3f(5.5f, 10.4f, -10.5f), 0.f, 10.4f) 
+    ));
+
+    class Vec3f_MinF : public Vec3f_VecScaScaFixture {};
+    TEST_P(Vec3f_MinF, Vec3f_Min)
+    {
+        float output = vector.min();
+        ASSERT_EQ(expected, output);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec3f_Min, Vec3f_MinF, testing::Values(
+        std::make_tuple(Vec3f(0.f, 0.f, 0.f), 0.f, 0.f),
+        std::make_tuple(Vec3f(2.4f, 2.5f, 2.4f), 0.f, 2.4f),
+        std::make_tuple(Vec3f(-2.5f, 0.f, 2.5f), 0.f, -2.5f),
+        std::make_tuple(Vec3f(-8.4f, -8.6f, -8.5f), 0.f, -8.6f),
+        std::make_tuple(Vec3f(5.5f, 10.4f, -10.5f), 0.f, -10.5f) 
+    ));
+
     // Vec3f operator + (const Vec3f& vector) const
     class Vec3f_AddVectorF : public Vec3f_VecVecVecFixture {};
     TEST_P(Vec3f_AddVectorF, Vec3f_AddVector)
