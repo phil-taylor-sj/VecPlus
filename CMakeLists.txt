@@ -17,7 +17,7 @@ endif()
 #set(PUBLIC_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
 #set(PUBLIC_SOURCE_DIR ${PROJECT_SOURCE_DIR}/src)
 
-add_library(${PROJECT_NAME} STATIC)
+add_library(${PROJECT_NAME} SHARED)
 
 target_sources(${PROJECT_NAME} 
     PRIVATE
@@ -76,15 +76,6 @@ install(TARGETS ${PROJECT_NAME}
     INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
     )
 
-
-
-install(EXPORT vecplusLibTargets
-    FILE vecplusLibConfig.cmake
-    NAMESPACE vecplus::
-    DESTINATION lib/cmake/${PROJECT_NAME}Lib
-)
-
-
 #target_include_directories(vecplus PUBLIC
 #    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 #    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
@@ -100,4 +91,10 @@ endif()
 if(PROJECT_IS_TOP_LEVEL)
     enable_testing()
     add_subdirectory(test)
+else()
+    install(EXPORT vecplusLibTargets
+        FILE vecplusLibConfig.cmake
+        NAMESPACE vecplus::
+        DESTINATION lib/cmake/${PROJECT_NAME}Lib
+    )
 endif()

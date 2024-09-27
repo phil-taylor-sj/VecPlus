@@ -42,6 +42,33 @@ namespace vecp
         */
         Vec3Decimal<T> rotate(char axis, T angle) const;
 
+        /*!
+         * \brief Round each component down to the nearest integer.
+         * 
+         * \return A new vector containing the floored compoent.
+        */
+        Vec3Decimal<T> floor() const;
+
+        /*!
+         * \brief Round each component towards zero to the nearest integer.
+         * 
+         * \return A new vector containing the floored compoent.
+        */
+        Vec3Decimal<T> floorAbs() const;
+
+        /*!
+         * \brief Round each component up to the nearest integer.
+         * 
+         * \return A new vector containing the rounded compoents.
+        */
+        Vec3Decimal<T> ceil() const;
+
+        /*!
+         * \brief Round each component away from zero to the nearest integer.
+         * 
+         * \return A new vector containing the rounded compoents.
+        */
+        Vec3Decimal<T> ceilAbs() const;
 
         /*!
          * \brief Overload the division operator (/) for vector by scalar division.

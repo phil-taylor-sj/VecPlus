@@ -46,6 +46,64 @@ namespace Vec2d_Tests
         Vec2d vectorOne, vectorTwo, expected;
     };
 
+    class Vec2d_VecScaScaFixture : public testing::TestWithParam<std::tuple<Vec2d, double, double>>
+    {
+    protected:
+        void SetUp() override
+        {
+            vector = std::get<0>(GetParam());
+            scalar = std::get<1>(GetParam());
+            expected = std::get<2>(GetParam());
+        }
+        Vec2d vector;
+        double scalar, expected;
+    };
+
+    class Vec2d_AbsF : public Vec2d_VecScaVecFixture {};
+    TEST_P(Vec2d_AbsF, Vec2d_Abs)
+    {
+        Vec2d output = vector.abs();
+        ASSERT_EQ(expected.x, output.x);
+        ASSERT_EQ(expected.y, output.y);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2d_Abs, Vec2d_AbsF, testing::Values(
+        std::make_tuple(Vec2d(0., 0.), 0., Vec2d(0., 0.)),
+        std::make_tuple(Vec2d(-2.5, 5.5), 0., Vec2d(2.5, 5.5)),
+        std::make_tuple(Vec2d(-16.4, -8.4), 0., Vec2d(16.4, 8.4)),
+        std::make_tuple(Vec2d(8.2, -10.2), 0., Vec2d(8.2, 10.2)) 
+    ));
+
+    class Vec2d_MaxF : public Vec2d_VecScaScaFixture {};
+    TEST_P(Vec2d_MaxF, Vec2d_Max)
+    {
+        double output = vector.max();
+        ASSERT_EQ(expected, output);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2d_Max, Vec2d_MaxF, testing::Values(
+        std::make_tuple(Vec2d(0., 0.), 0., 0.),
+        std::make_tuple(Vec2d(2.4, 2.5), 0., 2.5),
+        std::make_tuple(Vec2d(-2.5, 2.5), 0., 2.5),
+        std::make_tuple(Vec2d(-8.6, -8.5), 0., -8.5),
+        std::make_tuple(Vec2d(10.4, -10.5), 0., 10.4) 
+    ));
+
+    class Vec2d_MinF : public Vec2d_VecScaScaFixture {};
+    TEST_P(Vec2d_MinF, Vec2d_Min)
+    {
+        double output = vector.min();
+        ASSERT_EQ(expected, output);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2d_Min, Vec2d_MinF, testing::Values(
+        std::make_tuple(Vec2d(0., 0.), 0., 0.),
+        std::make_tuple(Vec2d(2.4, 2.5), 0., 2.4),
+        std::make_tuple(Vec2d(-2.5, 2.5), 0., -2.5),
+        std::make_tuple(Vec2d(-8.6, -8.5), 0., -8.6),
+        std::make_tuple(Vec2d(10.4, -10.5), 0., -10.5) 
+    ));
+
     // Vec2d operator + (const Vec2d& vector) const
     class Vec2d_AddVectorF : public Vec2d_VecVecVecFixture {};
     TEST_P(Vec2d_AddVectorF, Vec2d_AddVector)
@@ -260,6 +318,70 @@ namespace Vec2d_Tests
         std::make_tuple(Vec2d(5., 0.), 90., Vec2d(0., 5.)),
         std::make_tuple(Vec2d(5., 0.), 270., Vec2d(0., -5.)),
         std::make_tuple(Vec2d(5., 0.), 180., Vec2d(-5., 0.))
+    ));
+
+    // Vec2d floor() const
+    class Vec2d_FloorF : public Vec2d_VecScaVecFixture {};
+    TEST_P(Vec2d_FloorF, Vec2d_Floor)
+    {
+        Vec2d output = vector.floor();
+        ASSERT_NEAR(expected.x, output.x, 1E-06);
+        ASSERT_NEAR(expected.y, output.y, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2d_Floor, Vec2d_FloorF, testing::Values(
+        std::make_tuple(Vec2d(5.45, 4.667), 0., Vec2d(5., 4.)),
+        std::make_tuple(Vec2d(-0.24, 0.998), 0., Vec2d(-1., 0.)),
+        std::make_tuple(Vec2d(-4.998, 12.35345), 0., Vec2d(-5., 12.)),
+        std::make_tuple(Vec2d( -5.677, -2.001), 0., Vec2d(-6., -3.))
+    ));
+
+    // Vec2d floorAbs() const
+    class Vec2d_FloorAbsF : public Vec2d_VecScaVecFixture {};
+    TEST_P(Vec2d_FloorAbsF, Vec2d_FloorAbs)
+    {
+        Vec2d output = vector.floorAbs();
+        ASSERT_NEAR(expected.x, output.x, 1E-06);
+        ASSERT_NEAR(expected.y, output.y, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2d_FloorAbs, Vec2d_FloorAbsF, testing::Values(
+        std::make_tuple(Vec2d(5.45, 4.667), 0., Vec2d(5., 4.)),
+        std::make_tuple(Vec2d(-0.24, 0.998), 0., Vec2d(0., 0.)),
+        std::make_tuple(Vec2d(-4.998, 12.35345), 0., Vec2d(-4., 12.)),
+        std::make_tuple(Vec2d(-5.677, -2.001), 0., Vec2d(-5., -2.)) 
+    ));
+
+    // Vec2d ceil() const
+    class Vec2d_CeilF : public Vec2d_VecScaVecFixture {};
+    TEST_P(Vec2d_CeilF, Vec2d_Ceil)
+    {
+        Vec2d output = vector.ceil();
+        ASSERT_NEAR(expected.x, output.x, 1E-06);
+        ASSERT_NEAR(expected.y, output.y, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2d_Ceil, Vec2d_CeilF, testing::Values(
+        std::make_tuple(Vec2d(5.45, 4.667), 0., Vec2d(6., 5.)),
+        std::make_tuple(Vec2d(-0.24, 0.998), 0., Vec2d(0., 1.)),
+        std::make_tuple(Vec2d(-4.998, 12.35345), 0., Vec2d(-4., 13.)),
+        std::make_tuple(Vec2d( -5.677, -2.001), 0., Vec2d(-5., -2.))
+    ));
+
+    // Vec2d ceilAbs() const
+    class Vec2d_CeilAbsF : public Vec2d_VecScaVecFixture {};
+    TEST_P(Vec2d_CeilAbsF, Vec2d_CeilAbs)
+    {
+        Vec2d output = vector.ceilAbs();
+        ASSERT_NEAR(expected.x, output.x, 1E-06);
+        ASSERT_NEAR(expected.y, output.y, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2d_CeilAbs, Vec2d_CeilAbsF, testing::Values(
+        std::make_tuple(Vec2d(5.45, 4.667), 0., Vec2d(6., 5.)),
+        std::make_tuple(Vec2d(-0.24, 0.998), 0., Vec2d(-1., 1.)),
+        std::make_tuple(Vec2d(-4.998, 12.35345), 0., Vec2d(-5., 13.)),
+        std::make_tuple(Vec2d(-5.677, -2.001), 0., Vec2d(-6., -3.)) 
     ));
 
 

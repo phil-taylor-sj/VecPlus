@@ -46,6 +46,67 @@ namespace Vec2d_Tests
         Vec2f vectorOne, vectorTwo, expected;
     };
 
+    class Vec2f_VecScaScaFixture : public testing::TestWithParam<std::tuple<Vec2f, float, float>>
+    {
+    protected:
+        void SetUp() override
+        {
+            vector = std::get<0>(GetParam());
+            scalar = std::get<1>(GetParam());
+            expected = std::get<2>(GetParam());
+        }
+        Vec2f vector;
+        float scalar, expected;
+    };
+
+    // Vec2f abs() const
+    class Vec2f_AbsF : public Vec2f_VecScaVecFixture {};
+    TEST_P(Vec2f_AbsF, Vec2f_Abs)
+    {
+        Vec2f output = vector.abs();
+        ASSERT_EQ(expected.x, output.x);
+        ASSERT_EQ(expected.y, output.y);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2f_Abs, Vec2f_AbsF, testing::Values(
+        std::make_tuple(Vec2f(0.f, 0.f), 0.f, Vec2f(0.f, 0.f)),
+        std::make_tuple(Vec2f(-2.5f, 5.5f), 0.f, Vec2f(2.5f, 5.5f)),
+        std::make_tuple(Vec2f(-16.4f, -8.4f), 0.f, Vec2f(16.4f, 8.4f)),
+        std::make_tuple(Vec2f(8.2f, -10.2f), 0.f, Vec2f(8.2f, 10.2f)) 
+    ));
+
+    // float max() const
+    class Vec2f_MaxF : public Vec2f_VecScaScaFixture {};
+    TEST_P(Vec2f_MaxF, Vec2f_Max)
+    {
+        float output = vector.max();
+        ASSERT_EQ(expected, output);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2f_Max, Vec2f_MaxF, testing::Values(
+        std::make_tuple(Vec2f(0.f, 0.f), 0.f, 0.f),
+        std::make_tuple(Vec2f(2.4f, 2.5f), 0.f, 2.5f),
+        std::make_tuple(Vec2f(-2.5f, 2.5f), 0.f, 2.5f),
+        std::make_tuple(Vec2f(-8.6f, -8.5f), 0.f, -8.5f),
+        std::make_tuple(Vec2f(10.4f, -10.5f), 0.f, 10.4f) 
+    ));
+
+    // float min() const
+    class Vec2f_MinF : public Vec2f_VecScaScaFixture {};
+    TEST_P(Vec2f_MinF, Vec2f_Min)
+    {
+        float output = vector.min();
+        ASSERT_EQ(expected, output);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2f_Min, Vec2f_MinF, testing::Values(
+        std::make_tuple(Vec2f(0.f, 0.f), 0.f, 0.f),
+        std::make_tuple(Vec2f(2.4f, 2.5f), 0.f, 2.4f),
+        std::make_tuple(Vec2f(-2.5f, 2.5f), 0.f, -2.5f),
+        std::make_tuple(Vec2f(-8.6f, -8.5f), 0.f, -8.6f),
+        std::make_tuple(Vec2f(10.4f, -10.5f), 0.f, -10.5f) 
+    ));
+
     // Vec2f operator + (const Vec2f& vector) const
     class Vec2f_AddVectorF : public Vec2f_VecVecVecFixture {};
     TEST_P(Vec2f_AddVectorF, Vec2f_AddVector)
@@ -260,6 +321,71 @@ namespace Vec2d_Tests
         std::make_tuple(Vec2f(5.f, 0.f), 270.f, Vec2f(0.f, -5.f)),
         std::make_tuple(Vec2f(5.f, 0.f), 180.f, Vec2f(-5.f, 0.f))
     ));
+
+    // Vec2f floor() const
+    class Vec2f_FloorF : public Vec2f_VecScaVecFixture {};
+    TEST_P(Vec2f_FloorF, Vec2f_Floor)
+    {
+        Vec2f output = vector.floor();
+        ASSERT_NEAR(expected.x, output.x, 1E-06);
+        ASSERT_NEAR(expected.y, output.y, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2f_Floor, Vec2f_FloorF, testing::Values(
+        std::make_tuple(Vec2f(5.45f, 4.667f), 0.f, Vec2f(5.f, 4.f)),
+        std::make_tuple(Vec2f(-0.24f, 0.998f), 0.f, Vec2f(-1.f, 0.f)),
+        std::make_tuple(Vec2f(-4.998f, 12.35345f), 0.f, Vec2f(-5.f, 12.f)),
+        std::make_tuple(Vec2f( -5.677f, -2.001f), 0.f, Vec2f(-6.f, -3.f))
+    ));
+
+    // Vec2f floorAbs() const
+    class Vec2f_FloorAbsF : public Vec2f_VecScaVecFixture {};
+    TEST_P(Vec2f_FloorAbsF, Vec2f_FloorAbs)
+    {
+        Vec2f output = vector.floorAbs();
+        ASSERT_NEAR(expected.x, output.x, 1E-06);
+        ASSERT_NEAR(expected.y, output.y, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2f_FloorAbs, Vec2f_FloorAbsF, testing::Values(
+        std::make_tuple(Vec2f(5.45f, 4.667f), 0.f, Vec2f(5.f, 4.f)),
+        std::make_tuple(Vec2f(-0.24f, 0.998f), 0.f, Vec2f(0.f, 0.f)),
+        std::make_tuple(Vec2f(-4.998f, 12.3535f), 0.f, Vec2f(-4.f, 12.f)),
+        std::make_tuple(Vec2f(-5.677f, -2.001f), 0.f, Vec2f(-5.f, -2.f)) 
+    ));
+
+  // Vec2f ceil() const
+    class Vec2f_CeilF : public Vec2f_VecScaVecFixture {};
+    TEST_P(Vec2f_CeilF, Vec2f_Ceil)
+    {
+        Vec2f output = vector.ceil();
+        ASSERT_NEAR(expected.x, output.x, 1E-06);
+        ASSERT_NEAR(expected.y, output.y, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2f_Ceil, Vec2f_CeilF, testing::Values(
+        std::make_tuple(Vec2f(5.45f, 4.667f), 0.f, Vec2f(6.f, 5.f)),
+        std::make_tuple(Vec2f(-0.24f, 0.998f), 0.f, Vec2f(0.f, 1.f)),
+        std::make_tuple(Vec2f(-4.998f, 12.3535f), 0.f, Vec2f(-4.f, 13.f)),
+        std::make_tuple(Vec2f( -5.677f, -2.001f), 0.f, Vec2f(-5.f, -2.f))
+    ));
+
+    // Vec2f ceilAbs() const
+    class Vec2f_CeilAbsF : public Vec2f_VecScaVecFixture {};
+    TEST_P(Vec2f_CeilAbsF, Vec2f_CeilAbs)
+    {
+        Vec2f output = vector.ceilAbs();
+        ASSERT_NEAR(expected.x, output.x, 1E-06);
+        ASSERT_NEAR(expected.y, output.y, 1E-06);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2f_CeilAbs, Vec2f_CeilAbsF, testing::Values(
+        std::make_tuple(Vec2f(5.45f, 4.667f), 0.f, Vec2f(6.f, 5.f)),
+        std::make_tuple(Vec2f(-0.24f, 0.998f), 0.f, Vec2f(-1.f, 1.f)),
+        std::make_tuple(Vec2f(-4.998f, 12.3535f), 0.f, Vec2f(-5.f, 13.f)),
+        std::make_tuple(Vec2f(-5.677f, -2.001f), 0.f, Vec2f(-6.f, -3.f)) 
+    ));
+
 
     // Vec2f operator / (float scalar) const
     class Vec2f_DivideByScalarF : public Vec2f_VecScaVecFixture {};

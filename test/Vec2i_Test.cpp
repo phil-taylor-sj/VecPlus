@@ -45,6 +45,65 @@ namespace Vec2i_Tests
             Vec2i vectorOne, vectorTwo, expected;
     };
 
+    class Vec2i_VecScaScaFixture : public testing::TestWithParam<std::tuple<Vec2i, int, int>>
+    {
+        protected:
+            void SetUp() override
+            {
+                vector = std::get<0>(GetParam());
+                scalar = std::get<1>(GetParam());
+                expected = std::get<2>(GetParam());
+            }
+            Vec2i vector;
+            int scalar, expected;
+    };
+
+    // Vec2i abs() const
+    class Vec2i_AbsF : public Vec2i_VecScaVecFixture {};
+    TEST_P(Vec2i_AbsF, Vec2i_Abs)
+    {
+        Vec2i output = vector.abs();
+        ASSERT_EQ(expected.x, output.x);
+        ASSERT_EQ(expected.y, output.y);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2i_Abs, Vec2i_AbsF, testing::Values(
+        std::make_tuple(Vec2i(0, 0), 0, Vec2i(0, 0)),
+        std::make_tuple(Vec2i(-2, 5), 0, Vec2i(2, 5)),
+        std::make_tuple(Vec2i(-16, -8), 0, Vec2i(16, 8)),
+        std::make_tuple(Vec2i(8, -10), 0, Vec2i(8, 10)) 
+    ));
+
+    // int max() const
+    class Vec2i_MaxF : public Vec2i_VecScaScaFixture {};
+    TEST_P(Vec2i_MaxF, Vec2i_Max)
+    {
+        int output = vector.max();
+        ASSERT_EQ(expected, output);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2i_Max, Vec2i_MaxF, testing::Values(
+        std::make_tuple(Vec2i(0, 0), 0, 0),
+        std::make_tuple(Vec2i(-2, 5), 0, 5),
+        std::make_tuple(Vec2i(-16, -8), 0, -8),
+        std::make_tuple(Vec2i(8, -10), 0, 8) 
+    ));
+
+    // int min() const
+    class Vec2i_MinF : public Vec2i_VecScaScaFixture {};
+    TEST_P(Vec2i_MinF, Vec2i_Min)
+    {
+        int output = vector.min();
+        ASSERT_EQ(expected, output);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec2i_Min, Vec2i_MinF, testing::Values(
+        std::make_tuple(Vec2i(0, 0), 0, 0),
+        std::make_tuple(Vec2i(2, 5), 0, 2),
+        std::make_tuple(Vec2i(-16, -8), 0, -16),
+        std::make_tuple(Vec2i(8, -10), 0, -10) 
+    ));
+
     // Vec2i operator + (const Vec2i& vector) const
     class Vec2i_AddVectorF : public Vec2i_VecVecVecFixture {};
     TEST_P(Vec2i_AddVectorF, Vec2i_AddVector)

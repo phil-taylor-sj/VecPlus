@@ -39,8 +39,37 @@ namespace vecp
          * \brief Apply a rotation to the vector by a given angle.
          * 
          * \param angle The angle (in degrees) by which to rotate the vector.
+         * \return A new vector containing the transformed compoents.
         */
         Vec2Decimal<T> rotate(T angle) const;
+
+        /*!
+         * \brief Round each component down to the nearest integer.
+         * 
+         * \return A new vector containing the floored compoents.
+        */
+        Vec2Decimal<T> floor() const;
+
+        /*!
+         * \brief Round each component towards zero to the nearest integer.
+         * 
+         * \return A new vector containing the floored compoents.
+        */
+        Vec2Decimal<T> floorAbs() const;
+
+        /*!
+         * \brief Round each component up to the nearest integer.
+         * 
+         * \return A new vector containing the rounded compoents.
+        */
+        Vec2Decimal<T> ceil() const;
+
+        /*!
+         * \brief Round each component away from zero to the nearest integer.
+         * 
+         * \return A new vector containing the rounded compoents.
+        */
+        Vec2Decimal<T> ceilAbs() const;
 
 
         /*!
