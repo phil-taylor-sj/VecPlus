@@ -82,6 +82,25 @@ install(TARGETS ${PROJECT_NAME}
 #    $<INSTALL_INTERFACE:include/VecPlus/Vec2>
 #)
 
+install(EXPORT ${PROJECT_NAME}Targets
+    FILE ${PROJECT_NAME}Targets.cmake
+    NAMESPACE VecPlus::
+    DESTINATION lib/cmake/${PROJECT_NAME}
+)
+
+include(CMakePackageConfigHelpers)
+
+configure_package_config_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+    INSTALL_DESTINATION lib/cmake/${PROJECT_NAME}
+)
+
+install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+    DESTINATION lib/cmake/${PROJECT_NAME}
+)
+
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
     set(PROJECT_IS_TOP_LEVEL ON)
 else()
@@ -91,10 +110,4 @@ endif()
 if(PROJECT_IS_TOP_LEVEL)
     enable_testing()
     add_subdirectory(test)
-else()
-    install(EXPORT vecplusLibTargets
-        FILE vecplusLibConfig.cmake
-        NAMESPACE vecplus::
-        DESTINATION lib/cmake/${PROJECT_NAME}Lib
-    )
 endif()
