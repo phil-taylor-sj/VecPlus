@@ -60,6 +60,7 @@ namespace Vec3i_Tests
             int scalar, expected;
     };
 
+    // Vec3i abs() const
     class Vec3i_AbsF : public Vec3i_VecScaVecFixture {};
     TEST_P(Vec3i_AbsF, Vec3i_Abs)
     {
@@ -74,6 +75,7 @@ namespace Vec3i_Tests
         std::make_tuple(Vec3i(-16, -8, -10), 0, Vec3i(16, 8, 10))
     ));
 
+    // int max() const
     class Vec3i_MaxF : public Vec3i_VecScaScaFixture {};
     TEST_P(Vec3i_MaxF, Vec3i_Max)
     {
@@ -88,6 +90,7 @@ namespace Vec3i_Tests
         std::make_tuple(Vec3i(8, -8, -10), 0, 8) 
     ));
 
+    // int min() const
     class Vec3i_MinF : public Vec3i_VecScaScaFixture {};
     TEST_P(Vec3i_MinF, Vec3i_Min)
     {
