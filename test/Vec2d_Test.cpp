@@ -59,6 +59,7 @@ namespace Vec2d_Tests
         double scalar, expected;
     };
 
+    // Vec2d abs() const
     class Vec2d_AbsF : public Vec2d_VecScaVecFixture {};
     TEST_P(Vec2d_AbsF, Vec2d_Abs)
     {
@@ -74,6 +75,7 @@ namespace Vec2d_Tests
         std::make_tuple(Vec2d(8.2, -10.2), 0., Vec2d(8.2, 10.2)) 
     ));
 
+    // double max() const
     class Vec2d_MaxF : public Vec2d_VecScaScaFixture {};
     TEST_P(Vec2d_MaxF, Vec2d_Max)
     {
@@ -89,6 +91,7 @@ namespace Vec2d_Tests
         std::make_tuple(Vec2d(10.4, -10.5), 0., 10.4) 
     ));
 
+    // double min() const
     class Vec2d_MinF : public Vec2d_VecScaScaFixture {};
     TEST_P(Vec2d_MinF, Vec2d_Min)
     {
@@ -383,7 +386,6 @@ namespace Vec2d_Tests
         std::make_tuple(Vec2d(-4.998, 12.35345), 0., Vec2d(-5., 13.)),
         std::make_tuple(Vec2d(-5.677, -2.001), 0., Vec2d(-6., -3.)) 
     ));
-
 
     // Vec2d operator / (double scalar) const
     class Vec2d_DivideByScalarF : public Vec2d_VecScaVecFixture {};
