@@ -45,6 +45,22 @@ namespace vecp
         T min() const;
 
         /*!
+         * \brief Overload the addition operator (+) for vector and scalar addition.
+         * 
+         * \param vector The scalar to be added to  the current vector.
+         * \return A new vector containing the modified values.
+         * 
+        */
+        Derived<T> operator + (T scalar) const;
+
+        /*!
+         * \brief Overload the addition assignment operator (+=) for vector addition.
+         * 
+         * \param vector The vector to be added to the current vector.
+        */
+        void operator += (T scalar);
+
+        /*!
          * \brief Overload the addition operator (+) for vector addition.
          * 
          * \param vector The vector to be added to  the current vector.
@@ -58,8 +74,24 @@ namespace vecp
          * 
          * \param vector The vector to be added to the current vector.
         */
-        void operator += (const Derived<T> vector);
+        void operator += (const Derived<T>& vector);
         
+        /*!
+         * \brief Overload the subtration operator (-) for vector and scalar subtraction.
+         * 
+         * \param vector The scalar to be subtracted from the current vector.
+         * \return A new vector containing the modified values.
+         * 
+        */
+        Derived<T> operator - (T scalar) const;
+
+        /*!
+         * \brief Overload the subtraction assignment operator (-=) for vector subtraction.
+         * 
+         * \param vector The vector to be subtracted from the current vector.
+        */
+        void operator -= (T scalar);
+
         /*!
          * \brief Overload the subtration operator (-) for vector subtraction.
          * 
@@ -75,6 +107,7 @@ namespace vecp
          * \param vector The vector to be subtracted from the current vector.
         */
         void operator -= (const Derived<T>& vector);
+
 
         /*!
          * \brief Overload the multiplication operator (*) for vector by scalar multiplication.
