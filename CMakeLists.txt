@@ -17,7 +17,7 @@ endif()
 #set(PUBLIC_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
 #set(PUBLIC_SOURCE_DIR ${PROJECT_SOURCE_DIR}/src)
 
-add_library(${PROJECT_NAME} SHARED)
+add_library(${PROJECT_NAME} STATIC)
 
 target_sources(${PROJECT_NAME} 
     PRIVATE
