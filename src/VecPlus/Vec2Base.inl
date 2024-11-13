@@ -100,7 +100,7 @@ namespace vecp
     }
 
     template <typename T, template <typename> class Derived>
-    bool Vec2Base<T, Derived>::operator == (const Derived<T>& vector)
+    bool Vec2Base<T, Derived>::operator == (const Derived<T>& vector) const
     {
         return (this->x == vector.x && this->y == vector.y);
     }

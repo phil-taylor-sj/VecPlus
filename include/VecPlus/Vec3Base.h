@@ -115,7 +115,7 @@ namespace vecp
          * \return True if both vector components are equal, otherwise false.
         */
 
-        bool operator == (const Derived<T>& vector);
+        bool operator == (const Derived<T>& vector) const;
 
         /*!
          * \brief Construct a new Vec2 object with given x and y components.
