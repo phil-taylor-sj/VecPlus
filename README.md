@@ -37,6 +37,32 @@ VecPlus is a lightweight library of template classes designed to handle 2D and 3
 | `/` | | Vec2f, Vec2d, Vec3f, Vec3d |
 | `/=` | | Vec2f, Vec2d, Vec3f, Vec3d |
 
+## Usage 
+
+```cpp
+Vec2<float> a(3.5f, -4.2f);
+Vec2<float> b(1.5f, 2.8f);
+
+// Unary functions
+auto absA = a.abs();    // Returns (3.5, 4.2)
+float maxA = a.max();     // Returns 3.5
+float minA = a.min();     // Returns -4.2
+
+// Binary arithmetic operations
+auto sum    = a + b;     // Component-wise addition: (5.0, -1.4)
+auto diff   = a - b;     // Component-wise subtraction: (2.0, -7.0)
+auto scaled = a * 2.0f;  // Scalar multiplication: (7.0, -8.4)
+auto compMul = a * b;    // Component-wise multiplication: (5.25, -11.76)
+
+// Compound assignment operations
+a += b;   // a becomes (5.0, -1.4)
+a -= b;   // a reverts to (3.5, -4.2)
+a *= 2.0f;  // a becomes (7.0, -8.4)
+a *= b;   // a becomes (10.5, -23.52)
+
+// Equality check
+bool equal = (a == a);  // Returns true
+```
 ## Installing as Dependency
 
 To use the library in a CMake build, use FetchContent to retrieve the library 
