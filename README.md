@@ -86,8 +86,6 @@ target_link_libraries(${NEW_PROJECT} VecPlus)
 
 ## Installing for Development
 
-The test suite covers all tets for 
-
 To setup the library for development & testing, first clone the repository and navigate to the build diretory. Install CMake if it is not already available, and run the CMake build system by referencing the CMakeLists.txt file in the VecPlus root directory.
 
 ```
