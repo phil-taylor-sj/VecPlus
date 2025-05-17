@@ -20,7 +20,7 @@ namespace vecp
         T x; /// The x-coordinate of the vector.
         T y; /// The y-coordinate of the vector.
 
-        /*!
+        /**
          * \brief Get the absolute values of each component.
          * 
          * \return A new vector containing the absolute values.
@@ -37,12 +37,29 @@ namespace vecp
         T max() const;
 
         /*!
+         * \brief Get the maximum value of each components two vectors.
+         * 
+         * \return Returns a vector of maximum values.
+         * 
+        */
+        Derived<T> max(const Derived<T>& vector) const;
+
+
+        /*!
          * \brief Get the minimum value of all components.
          * 
          * \return Returns the minimum value.
          * 
         */
         T min() const;
+
+        /*!
+         * \brief Get the minimum value of each components two vectors.
+         * 
+         * \return Returns a vector of minimum values.
+         * 
+        */
+        Derived<T> min(const Derived<T>& vector) const;
 
         /*!
          * \brief Overload the addition operator (+) for vector and scalar addition.
