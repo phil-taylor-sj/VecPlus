@@ -16,9 +16,29 @@ namespace vecp
     }
 
     template <typename T, template <typename> class Derived>
+    Derived<T> Vec3Base<T, Derived>::max(const Derived<T>& vector) const
+    {
+        return Derived<T>(
+            std::max(this->x, vector.x),
+            std::max(this->y, vector.y),
+            std::max(this->z, vector.z)
+        );
+    }
+
+    template <typename T, template <typename> class Derived>
     T Vec3Base<T, Derived>::min() const
     {
         return std::min(std::min(this->x, this->y), this->z);
+    }
+
+    template <typename T, template <typename> class Derived>
+    Derived<T> Vec3Base<T, Derived>::min(const Derived<T>& vector) const
+    {
+        return Derived<T>(
+            std::min(this->x, vector.x),
+            std::min(this->y, vector.y),
+            std::min(this->z, vector.z)
+        );
     }
 
     template <typename T, template <typename> class Derived>

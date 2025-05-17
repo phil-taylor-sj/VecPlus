@@ -94,6 +94,24 @@ namespace Vec3d_Tests
         std::make_tuple(Vec3d(5.5, 10.4, -10.5), 0., 10.4) 
     ));
 
+    // Vec3d max(Vec3d) const
+    class Vec3d_MaxOfTwoVectorsF : public Vec3d_VecVecVecFixture {};
+    TEST_P(Vec3d_MaxOfTwoVectorsF, Vec3d_MaxOfTwoVectors)
+    {
+        Vec3d output = vectorOne.max(vectorTwo);
+        ASSERT_DOUBLE_EQ(expected.x, output.x);
+        ASSERT_DOUBLE_EQ(expected.y, output.y);
+        ASSERT_DOUBLE_EQ(expected.z, output.z);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec3d_MaxOfTwoVectors, Vec3d_MaxOfTwoVectorsF, testing::Values(
+        std::make_tuple(Vec3d( 5.5,   2.2,   9.9), Vec3d( 3.3,   7.7,   1.1), Vec3d( 5.5,   7.7,   9.9)),
+        std::make_tuple(Vec3d(10.0, -10.0,   0.0), Vec3d( 4.5,  -6.5,  -2.5), Vec3d(10.0,  -6.5,   0.0)),
+        std::make_tuple(Vec3d(-3.3, -14.3,  20.0), Vec3d(-2.2,  -8.8, -21.0), Vec3d(-2.2,  -8.8,  20.0)),
+        std::make_tuple(Vec3d( 0.0,   0.0,   0.0), Vec3d( 0.0,   0.0,   0.0), Vec3d( 0.0,   0.0,   0.0))
+    ));
+
+
     // double min() const
     class Vec3d_MinF : public Vec3d_VecScaScaFixture {};
     TEST_P(Vec3d_MinF, Vec3d_Min)
@@ -110,6 +128,21 @@ namespace Vec3d_Tests
         std::make_tuple(Vec3d(5.5, 10.4, -10.5), 0., -10.5) 
     ));
     
+    class Vec3d_MinOfTwoVectorsF : public Vec3d_VecVecVecFixture {};
+    TEST_P(Vec3d_MinOfTwoVectorsF, Vec3d_MinOfTwoVectors)
+    {
+        Vec3d output = vectorOne.min(vectorTwo);
+        ASSERT_DOUBLE_EQ(expected.x, output.x);
+        ASSERT_DOUBLE_EQ(expected.y, output.y);
+        ASSERT_DOUBLE_EQ(expected.z, output.z);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec3d_MinOfTwoVectors, Vec3d_MinOfTwoVectorsF, testing::Values(
+        std::make_tuple(Vec3d( 5.5,   2.2,   9.9), Vec3d( 3.3,   7.7,   1.1), Vec3d( 3.3,   2.2,   1.1)),
+        std::make_tuple(Vec3d(10.0, -10.0,   0.0), Vec3d( 4.5,  -6.5,  -2.5), Vec3d( 4.5, -10.0,  -2.5)),
+        std::make_tuple(Vec3d(-3.3, -14.3,  20.0), Vec3d(-2.2,  -8.8, -21.0), Vec3d(-3.3, -14.3, -21.0)),
+        std::make_tuple(Vec3d( 0.0,   0.0,   0.0), Vec3d( 0.0,   0.0,   0.0), Vec3d( 0.0,   0.0,   0.0))
+    ));
 
     // Vec3d operator + (const Vec3d& vector) const
     class Vec3d_AddVectorF : public Vec3d_VecVecVecFixture {};

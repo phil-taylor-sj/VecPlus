@@ -89,6 +89,22 @@ namespace Vec2i_Tests
         std::make_tuple(Vec2i(8, -10), 0, 8) 
     ));
 
+    // Vec2i max(Vec2i) const
+    class Vec2i_MaxOfTwoVectorsF : public Vec2i_VecVecVecFixture {};
+    TEST_P(Vec2i_MaxOfTwoVectorsF, Vec2i_MaxOfTwoVectors)
+    {
+        Vec2i output = vectorOne.max(vectorTwo);
+        ASSERT_EQ(expected.x, output.x);
+        ASSERT_EQ(expected.y, output.y);
+    }
+    
+    INSTANTIATE_TEST_SUITE_P(Vec2i_MaxOfTwoVectors, Vec2i_MaxOfTwoVectorsF, testing::Values(
+        std::make_tuple(Vec2i(5, 2), Vec2i(3, 7), Vec2i(5, 7)),
+        std::make_tuple(Vec2i(10, -10), Vec2i(4, -6), Vec2i(10, -6)),
+        std::make_tuple(Vec2i(-3, -14), Vec2i(-2, -8), Vec2i(-2, -8)),
+        std::make_tuple(Vec2i(0, 0), Vec2i(0, 0), Vec2i(0, 0))
+    ));
+
     // int min() const
     class Vec2i_MinF : public Vec2i_VecScaScaFixture {};
     TEST_P(Vec2i_MinF, Vec2i_Min)
@@ -102,6 +118,23 @@ namespace Vec2i_Tests
         std::make_tuple(Vec2i(2, 5), 0, 2),
         std::make_tuple(Vec2i(-16, -8), 0, -16),
         std::make_tuple(Vec2i(8, -10), 0, -10) 
+    ));
+
+
+    // Vec2i min(Vec2i) const
+    class Vec2i_MinOfTwoVectorsF : public Vec2i_VecVecVecFixture {};
+    TEST_P(Vec2i_MinOfTwoVectorsF, Vec2i_MinOfTwoVectors)
+    {
+        Vec2i output = vectorOne.min(vectorTwo);
+        ASSERT_DOUBLE_EQ(expected.x, output.x);
+        ASSERT_DOUBLE_EQ(expected.y, output.y);
+    }
+    
+    INSTANTIATE_TEST_SUITE_P(Vec2i_MinOfTwoVectors, Vec2i_MinOfTwoVectorsF, testing::Values(
+        std::make_tuple(Vec2i(5, 2), Vec2i(3, 7), Vec2i(3, 2)),
+        std::make_tuple(Vec2i(10, -10), Vec2i(4, -6), Vec2i(4, -10)),
+        std::make_tuple(Vec2i(-3, -14), Vec2i(-2, -8), Vec2i(-3, -14)),
+        std::make_tuple(Vec2i(0, 0.0f), Vec2i(0, 0), Vec2i(0, 0.0))
     ));
 
     // Vec2i operator + (const Vec2i& vector) const
