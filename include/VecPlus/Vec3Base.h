@@ -39,12 +39,28 @@ namespace vecp
         T max() const;
 
         /*!
+         * \brief Get the maximum value of each components two vectors.
+         * 
+         * \return Returns a vector of maximum values.
+         * 
+        */
+        Derived<T> max(const Derived<T>& vector) const;
+
+        /*!
          * \brief Get the minimum value of all components.
          * 
          * \return Returns the minimum value.
          * 
         */
-        T min() const;      
+        T min() const; 
+        
+        /*!
+         * \brief Get the minimum value of each components two vectors.
+         * 
+         * \return Returns a vector of minimum values.
+         * 
+        */
+        Derived<T> min(const Derived<T>& vector) const;
 
         /*!
          * \brief Overload the addition operator (+) for vector addition.
@@ -115,7 +131,7 @@ namespace vecp
          * \return True if both vector components are equal, otherwise false.
         */
 
-        bool operator == (const Derived<T>& vector);
+        bool operator == (const Derived<T>& vector) const;
 
         /*!
          * \brief Construct a new Vec2 object with given x and y components.

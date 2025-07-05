@@ -90,6 +90,23 @@ namespace Vec3i_Tests
         std::make_tuple(Vec3i(8, -8, -10), 0, 8) 
     ));
 
+    // Vec3i max(Vec3i) const
+    class Vec3i_MaxOfTwoVectorsF : public Vec3i_VecVecVecFixture {};
+    TEST_P(Vec3i_MaxOfTwoVectorsF, Vec3i_MaxOfTwoVectors)
+    {
+        Vec3i output = vectorOne.max(vectorTwo);
+        ASSERT_EQ(expected.x, output.x);
+        ASSERT_EQ(expected.y, output.y);
+        ASSERT_EQ(expected.z, output.z);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec3i_MaxOfTwoVectors, Vec3i_MaxOfTwoVectorsF, testing::Values(
+        std::make_tuple(Vec3i( 5,   2,   9), Vec3i( 3,   7,   1), Vec3i( 5,   7,   9)),
+        std::make_tuple(Vec3i(10, -10,   0), Vec3i( 4,  -6,  -2), Vec3i(10,  -6,   0)),
+        std::make_tuple(Vec3i(-3, -14,  20), Vec3i(-2,  -8, -21), Vec3i(-2,  -8,  20)),
+        std::make_tuple(Vec3i( 0,   0,   0), Vec3i( 0,   0,   0), Vec3i( 0,   0,   0))
+    ));
+
     // int min() const
     class Vec3i_MinF : public Vec3i_VecScaScaFixture {};
     TEST_P(Vec3i_MinF, Vec3i_Min)
@@ -103,6 +120,23 @@ namespace Vec3i_Tests
         std::make_tuple(Vec3i(2, 5, 2), 0, 2),
         std::make_tuple(Vec3i(0, -16, -8), 0, -16),
         std::make_tuple(Vec3i(8, 10, -10), 0, -10) 
+    ));
+
+    // Vec3i min(Vec3i) const
+    class Vec3i_MinOfTwoVectorsF : public Vec3i_VecVecVecFixture {};
+    TEST_P(Vec3i_MinOfTwoVectorsF, Vec3i_MinOfTwoVectors)
+    {
+        Vec3i output = vectorOne.min(vectorTwo);
+        ASSERT_EQ(expected.x, output.x);
+        ASSERT_EQ(expected.y, output.y);
+        ASSERT_EQ(expected.z, output.z);
+    }
+
+    INSTANTIATE_TEST_SUITE_P(Vec3i_MinOfTwoVectors, Vec3i_MinOfTwoVectorsF, testing::Values(
+        std::make_tuple(Vec3i( 5,   2,   9), Vec3i( 3,   7,   1), Vec3i( 3,   2,   1)),
+        std::make_tuple(Vec3i(10, -10,   0), Vec3i( 4,  -6,  -2), Vec3i( 4, -10,  -2)),
+        std::make_tuple(Vec3i(-3, -14,  20), Vec3i(-2,  -8, -21), Vec3i(-3, -14, -21)),
+        std::make_tuple(Vec3i( 0,   0,   0), Vec3i( 0,   0,   0), Vec3i( 0,   0,   0))
     ));
 
     // Vec3i operator + (const Vec3i& vector) const

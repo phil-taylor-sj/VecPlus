@@ -20,7 +20,7 @@ namespace vecp
         T x; /// The x-coordinate of the vector.
         T y; /// The y-coordinate of the vector.
 
-        /*!
+        /**
          * \brief Get the absolute values of each component.
          * 
          * \return A new vector containing the absolute values.
@@ -37,12 +37,45 @@ namespace vecp
         T max() const;
 
         /*!
+         * \brief Get the maximum value of each components two vectors.
+         * 
+         * \return Returns a vector of maximum values.
+         * 
+        */
+        Derived<T> max(const Derived<T>& vector) const;
+
+
+        /*!
          * \brief Get the minimum value of all components.
          * 
          * \return Returns the minimum value.
          * 
         */
         T min() const;
+
+        /*!
+         * \brief Get the minimum value of each components two vectors.
+         * 
+         * \return Returns a vector of minimum values.
+         * 
+        */
+        Derived<T> min(const Derived<T>& vector) const;
+
+        /*!
+         * \brief Overload the addition operator (+) for vector and scalar addition.
+         * 
+         * \param vector The scalar to be added to  the current vector.
+         * \return A new vector containing the modified values.
+         * 
+        */
+        Derived<T> operator + (T scalar) const;
+
+        /*!
+         * \brief Overload the addition assignment operator (+=) for vector addition.
+         * 
+         * \param vector The vector to be added to the current vector.
+        */
+        void operator += (T scalar);
 
         /*!
          * \brief Overload the addition operator (+) for vector addition.
@@ -58,8 +91,24 @@ namespace vecp
          * 
          * \param vector The vector to be added to the current vector.
         */
-        void operator += (const Derived<T> vector);
+        void operator += (const Derived<T>& vector);
         
+        /*!
+         * \brief Overload the subtration operator (-) for vector and scalar subtraction.
+         * 
+         * \param vector The scalar to be subtracted from the current vector.
+         * \return A new vector containing the modified values.
+         * 
+        */
+        Derived<T> operator - (T scalar) const;
+
+        /*!
+         * \brief Overload the subtraction assignment operator (-=) for vector subtraction.
+         * 
+         * \param vector The vector to be subtracted from the current vector.
+        */
+        void operator -= (T scalar);
+
         /*!
          * \brief Overload the subtration operator (-) for vector subtraction.
          * 
@@ -75,6 +124,7 @@ namespace vecp
          * \param vector The vector to be subtracted from the current vector.
         */
         void operator -= (const Derived<T>& vector);
+
 
         /*!
          * \brief Overload the multiplication operator (*) for vector by scalar multiplication.
@@ -113,7 +163,7 @@ namespace vecp
          * \return True if both vector components are equal, otherwise false.
         */
 
-        bool operator == (const Derived<T>& vector);
+        bool operator == (const Derived<T>& vector) const;
 
         /*!
          * \brief Construct a new Vec2 object with given x and y components.
