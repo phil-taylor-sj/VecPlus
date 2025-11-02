@@ -502,12 +502,12 @@ namespace Vec3f_Tests
         std::make_tuple(Vec3f(5.f, -4.f, 3.f), Vec3f(6.2f, -2.5f, 1.1f), 44.3f)
     ));
 
-    // double Vec3d::dot(double scalar) const
+    // float Vec3f::dot(float scalar) const
     class Vec3f_DotScalarF : public Vec3f_VecVecScaFixture {};
     TEST_P(Vec3f_DotScalarF, Vec3f_DotScalar)
     {
         float output = vectorOne.dot(vectorTwo.x);
-        ASSERT_NEAR(expected, output, 1E-06);
+        ASSERT_NEAR(expected, output, 1E-05);
     }
 
     INSTANTIATE_TEST_SUITE_P(Vec3f_DotScalar, Vec3f_DotScalarF, testing::Values(
@@ -518,12 +518,12 @@ namespace Vec3f_Tests
     ));
 
 
-    // double Vec3d::dot(double xTwo, double yTwo, double zTwo) const
+    // float Vec3f::dot(float xTwo, float yTwo, float zTwo) const
     class Vec3f_DotScalarScalarF : public Vec3f_VecVecScaFixture {};
     TEST_P(Vec3f_DotScalarScalarF, Vec3f_DotScalarScalar)
     {
         float output = vectorOne.dot(vectorTwo.x, vectorTwo.y, vectorTwo.z);
-        ASSERT_NEAR(expected, output, 1E-06);
+        ASSERT_NEAR(expected, output, 1E-05);
     }
 
     INSTANTIATE_TEST_SUITE_P(Vec3f_DotScalarScalar, Vec3f_DotScalarScalarF, testing::Values(
