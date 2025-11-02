@@ -152,7 +152,7 @@ namespace vecp
         //Vec2fd(T xin = 0., T yin = 0.);
 
     private:
-        double m_pi = 3.141592653589793;
+        inline static constexpr T m_pi = 3.141592653589793;
     }; 
 
     extern template class Vec2Decimal<float>;
