@@ -35,9 +35,9 @@ namespace vecp
         //Vec2int(int xin = 0, int yin = 0);
     };
 
-    extern template class Vec2Base<int, Vec2Int>;
+    //extern template class Vec2Base<int, Vec2Int>;
 
-    extern template class Vec2Int<int>;
+    //extern template class Vec2Int<int>;
 }
 
 #include <VecPlus/Vec2Int.inl>
