@@ -155,13 +155,13 @@ namespace vecp
         inline static constexpr T m_pi = 3.141592653589793;
     }; 
 
-    extern template class Vec2Decimal<float>;
+    //extern template class Vec2Decimal<float>;
 
-    extern template class Vec2Decimal<double>;
+    //extern template class Vec2Decimal<double>;
 
-    extern template class Vec2Base<float, Vec2Decimal>;
+    //extern template class Vec2Base<float, Vec2Decimal>;
 
-    extern template class Vec2Base<double, Vec2Decimal>;
+    //extern template class Vec2Base<double, Vec2Decimal>;
 
 }
 
