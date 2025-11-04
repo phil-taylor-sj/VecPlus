@@ -1,5 +1,5 @@
 #pragma once
-#include "Vec2Base.h"
+#include <VecPlus/Vec2Base.h>
 #include <VecPlus/Vec2Decimal.h>
 
 namespace vecp
@@ -39,3 +39,5 @@ namespace vecp
 
     extern template class Vec2Int<int>;
 }
+
+#include <VecPlus/Vec2Base.inl>

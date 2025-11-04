@@ -174,3 +174,5 @@ namespace vecp
         Vec2Base(T xin = T(), T yin = T()) : x(xin), y(yin) {}
     };
 }
+
+#include <VecPlus/Vec2Base.inl>

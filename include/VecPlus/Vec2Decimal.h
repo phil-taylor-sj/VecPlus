@@ -164,3 +164,5 @@ namespace vecp
     extern template class Vec2Base<double, Vec2Decimal>;
 
 }
+
+#include <VecPlus/Vec2Base.inl>
