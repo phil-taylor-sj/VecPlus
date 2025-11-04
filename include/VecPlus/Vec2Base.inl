@@ -1,8 +1,8 @@
 #pragma once
 
+
 namespace vecp
 {
-
     template <typename T, template <typename> class Derived>
     Derived<T> Vec2Base<T, Derived>::abs() const
     {

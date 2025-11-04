@@ -40,4 +40,4 @@ namespace vecp
     extern template class Vec2Int<int>;
 }
 
-#include <VecPlus/Vec2Base.inl>
+#include <VecPlus/Vec2Int.inl>
