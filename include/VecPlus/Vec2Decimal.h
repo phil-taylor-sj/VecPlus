@@ -165,4 +165,4 @@ namespace vecp
 
 }
 
-#include <VecPlus/Vec2Base.inl>
+#include <VecPlus/Vec2Decimal.inl>
