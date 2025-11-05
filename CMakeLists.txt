@@ -57,7 +57,7 @@ endif()
 
 set(public_headers 
     include/VecPlus/Vec2.h 
-    include/VecPlus/Vec2Decimal.h 
+    include/VecPlus/Vec2Decimal.h
     include/VecPlus/Vec2Int.h
     include/VecPlus/Vec3.h
     include/VecPlus/Vec3Int.h

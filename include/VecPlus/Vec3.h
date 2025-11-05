@@ -3,6 +3,7 @@
 #include <VecPlus/Vec3Decimal.h>
 #include <VecPlus/Vec3Int.h>
 
+
 namespace vecp
 {
     using Vec3i = Vec3Int<int>;

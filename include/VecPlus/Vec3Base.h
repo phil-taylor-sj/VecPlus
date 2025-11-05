@@ -1,6 +1,8 @@
 #pragma once
+
 #include <cmath>
 #include <algorithm>
+
 
 namespace vecp
 {
@@ -142,3 +144,5 @@ namespace vecp
         Vec3Base(T xin = T(), T yin = T(), T zin = T()) : x(xin), y(yin), z(zin) {}
     };
 }
+
+#include <VecPlus/Vec3Base.inl>
