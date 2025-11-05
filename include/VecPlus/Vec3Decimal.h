@@ -1,5 +1,7 @@
 #pragma once
+
 #include <VecPlus/Vec3Base.h>
+
 
 namespace vecp
 {
@@ -153,13 +155,6 @@ namespace vecp
     private:
         inline static constexpr T m_pi = 3.141592653589793;
     }; 
-
-    extern template class Vec3Decimal<float>;
-
-    extern template class Vec3Decimal<double>;
-
-    extern template class Vec3Base<float, Vec3Decimal>;
-
-    extern template class Vec3Base<double, Vec3Decimal>;
-
 }
+
+#include <VecPlus/Vec3Decimal.inl>

@@ -1,5 +1,5 @@
-#include <VecPlus/Vec2Base.h>
 #include <VecPlus/Vec2Int.h>
+#include <VecPlus/Vec2Base.h>
 
 
 namespace vecp

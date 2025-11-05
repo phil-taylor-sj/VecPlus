@@ -1,5 +1,6 @@
 #pragma once
 
+
 namespace vecp
 {
     template <typename T>

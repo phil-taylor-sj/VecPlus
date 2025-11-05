@@ -3,6 +3,7 @@
 #include <VecPlus/Vec2Decimal.h>
 #include <VecPlus/Vec2Int.h>
 
+
 namespace vecp
 {
     using Vec2i = Vec2Int<int>;

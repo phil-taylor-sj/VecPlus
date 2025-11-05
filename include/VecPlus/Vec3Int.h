@@ -1,6 +1,8 @@
 #pragma once
-#include "Vec3Base.h"
+
+#include <VecPlus/Vec3Base.h>
 #include <VecPlus/Vec3Decimal.h>
+
 
 namespace vecp
 {
@@ -34,8 +36,6 @@ namespace vecp
         using Vec3Base<T, Vec3Int>::Vec3Base;
         //Vec2int(int xin = 0, int yin = 0);
     };
-
-    extern template class Vec3Base<int, Vec3Int>;
-
-    extern template class Vec3Int<int>;
 }
+
+#include <VecPlus/Vec3Int.inl>

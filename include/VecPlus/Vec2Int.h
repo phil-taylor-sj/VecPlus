@@ -1,6 +1,8 @@
 #pragma once
+
 #include <VecPlus/Vec2Base.h>
 #include <VecPlus/Vec2Decimal.h>
+
 
 namespace vecp
 {
